@@ -88,9 +88,11 @@ let igualAo = primeiroNumero === segundoNumero;
 console.log(igualAo);
 
 let divisivelPeloSegundo = primeiroNumero / segundoNumero;
+divisivelPeloSegundo > 0;
 console.log(divisivelPeloSegundo);
 
 let divisivelPeloPrimeiro = segundoNumero / primeiroNumero;
+divisivelPeloPrimeiro > 0
 console.log(divisivelPeloPrimeiro)
 
 
