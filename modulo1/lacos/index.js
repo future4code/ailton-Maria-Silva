@@ -52,8 +52,23 @@ while(quantidadeAtual < quantidadeTotal){
 //c) Por fim, imprima o array com os nomes dos bichinhos no console
 
 
+let nomeAnimais = [];
+let quantosAnimais = Number(prompt("Quantos animais você tem?"));
+nomeAnimais.push(quantosAnimais);
+
+if (quantosAnimais === 0){
+  console.log("Que pena, você pode adotar um pet!")
+}else{
+  for (let i = 0; i < quantosAnimais; i++);
+    let animaisQueTem = prompt("Digite o nome dele:");
+    animaisQueTem.push(nomeAnimais);
+}
+console.log(nomeAnimais);
+ 
+//-------------------------------------------------------
 
 let quantosAnimais = Number(prompt("Quantos animais você tem?"));
+
 
 if(quantosAnimais === 0){
 
@@ -63,9 +78,14 @@ if(quantosAnimais === 0){
     for (let i =0; i < quantosAnimais; i++);
         let animaisQueTem = [];
         animaisQueTem = (prompt("Digite o nome deles:"));
-        nomeAnimais.push(animaisQueTem);
+        animaisQueTem.push[(animaisQueTem)];
 }
 console.log(animaisQueTem);
+
+//
+
+let quantosAnimais = Number(prompt("Quantos animais você tem?"));
+  if (quantosAnimais === 0);
 
 // ESSA NÃO TÁ ROLANDO AINDA, EU SEI O QUE PRECISO FAZER, MAS NÃO SEI COMO
 // FOI O QUE CONSEGUI FAZER ATÉ O MOMENTO / no meu não deu certo, só chega perguntar uma vez o nome do Animal
@@ -89,13 +109,14 @@ for(let numeroArrayOriginal of arrayOriginal){
 
 //c) %2 === 0
 let numerosPares = () =>
-    let arrayPares = []
+    let arrayPares = [];
     for (let i = 0; i < arrayOriginal.length; i++){
-        if(numeroArrayOriginal[i] % ===0);
-        arrayPares.push(arrayOriginal[i])
+        if(numeroArrayOriginal[i] % ===0){
+        arrayPares.push(arrayOriginal[i])}
         console.log(arrayPares)
 
     }
+    console.log(numerosPares(arrayPares))
 
 
 //d) 
