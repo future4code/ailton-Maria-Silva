@@ -3,41 +3,47 @@
 //    -> NÃO MODIFIQUE OS PARÂMETROS DAS FUNÇÕES!!! ()
 
 
-// EXERCÍCIO 01 - PASSOU
+// EXERCÍCIO 01 
 function retornaTamanhoArray(array) {
     return array.length
 }
 
-// EXERCÍCIO 02 - PASSOU
+// EXERCÍCIO 02 
 function retornaArrayInvertido(array) {
     return array.reverse();
 }
 
-// EXERCÍCIO 03 - NÃO PASSOU NO TESTE / MAS PASSOU NO MEU
+// EXERCÍCIO 03 
 function retornaArrayOrdenado(array) {
+    if (a < b){
+        return -1;
+    } else if(a > b){
+        return 1;
+        }
+        return 0;
+    }
     return array.sort();
-}
 
-// EXERCÍCIO 04 - NÃO PASSOU NO TESTE / MAS PASSOU NO MEU
+// EXERCÍCIO 04 
 function retornaNumerosPares(array) {
     const retornaPares = array.filter((numero) => { 
         return numero % 2 === 0;
     })
 }
 
-// EXERCÍCIO 05 - NÃO PASSOU NO TESTE / MAS PASSOU NO MEU
+// EXERCÍCIO 05 
 function retornaNumerosParesElevadosADois(array) {
     const retornaParesElevado = array.filter((numero) => { 
         return (numero % 2 === 0) **2 
     })
 }
 
-// EXERCÍCIO 06 - NÃO PASSOU NO TESTE / MAS PASSOU NO MEU
+// EXERCÍCIO 06 
 function retornaMaiorNumero(array) {
     return Math.max(...array);
 }
 
-// EXERCÍCIO 07 - NÃO PASSOU NO TESTE / MAS PASSOU NO MEU
+// EXERCÍCIO 07 
 function retornaObjetoEntreDoisNumeros(num1, num2) {
     let maiorNumero = Math.max(num1, num2);
     let menorNumero = Math.min(num1, num2);
@@ -46,7 +52,7 @@ function retornaObjetoEntreDoisNumeros(num1, num2) {
     return {maiorNumero, maiorDivisivelPorMenor, diferenca}
 }
 
-// EXERCÍCIO 08 - NÃO PASSOU NO TESTE / MAS PASSOU NO MEU
+// EXERCÍCIO 08 
 function retornaNPrimeirosPares(n) {
     let pares = [];
     for (let i = 0; i <= n; i+1){
@@ -57,31 +63,52 @@ function retornaNPrimeirosPares(n) {
    return pares;
 }
 
-// EXERCÍCIO 09 - NÃO PASSOU NO TESTE 
+// EXERCÍCIO 09 
 function classificaTriangulo(ladoA, ladoB, ladoC) {
     if(ladoA == ladoB == ladoC){
         return "Equilátero"
-    }else if(ladoA < ladoB, ladoB < ladoC){
+    }if(ladoA < ladoB, ladoB < ladoC){
         return "Escaleno"
-    }else{
+    }
         return "Isóceles"
     }
 
-}
 
-// EXERCÍCIO 10 - NÃO PASSOU NO TESTE / Não está certo mesmo, mas não imagino como fazer
+
+// EXERCÍCIO 10 
 function retornaSegundoMaiorESegundoMenor(array) {
-    let segundoMaior = Math.max(...array)
-    let segundoMenor = Math.min(...array)
-    return segundoMaior, segundoMenor  
-}
+    let primeiroMaior = - Infinity;
+    let segundoMaior = - Infinity;
+    let primeiroMenor = + Infinity;
+    let segundoMenor =  Infinity;
 
-// EXERCÍCIO 11 - NÃO PASSOU NO TESTE / MAS PASSOU NO MEU
+    for (let numero of array) {
+        if (numero > primeiroMaior){
+            primeiroMaior = numero
+        }if ( numero < primeiroMenor){
+                primeiroMenor = numero
+            }
+        }
+        for (let numero of array){
+            if (numero > segundoMaior && numero !== primeiroMaior){
+                segundoMaior = numero
+            }if (numero < segundoMenor && numero !== primeiroMenorr){
+                segundoMenor = numero
+            }
+            }
+        
+        const arrayMaiorMenor = [segundoMaior, segundoMenor]
+        return arrayMaiorMenor
+    }
+  
+
+
+// EXERCÍCIO 11 
 function retornaChamadaDeFilme(filme) {
     return `Venha assistir o filme ${filme.nome}, de ${filme.ano}, dirigido por ${filme.diretor} e estrelado por ${filme.atores[0]}, ${filme.atores[1]}, ${filme.atores[2]} e ${filme.atores[3]}.`
 }
 
-// EXERCÍCIO 12 - NÃO PASSOU NO TESTE / MAS PASSOU NO MEU
+// EXERCÍCIO 12 
 function retornaPessoaAnonimizada(pessoa) {
     const pessoa = {
         nome: "Astrodev",
@@ -101,7 +128,7 @@ function retornaPessoaAnonimizada(pessoa) {
     return pessoaAnonima
 }
 
-// EXERCÍCIO 13A - NÃO PASSOU NO TESTE / MAS PASSOU NO MEU
+// EXERCÍCIO 13A 
 function retornaPessoasAutorizadas(pessoas) {
     const arrayAutorizadas = pessoas.filter((pessoa) => {
         pessoa.idade > 14 && pessoa.idade < 60 && pessoa.altura > 1.5 
@@ -119,6 +146,7 @@ function retornaPessoasNaoAutorizadas(pessoas) {
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
+    let compras = 
 
 }
 
