@@ -1,0 +1,107 @@
+/* AQUI É SOBRE A PÁGINA INICIAL / E APARENCIA GERAL DAS OUTRAS */
+
+body {
+    display: inline-block;
+    background-color: rgb(187, 183, 183);
+    border: 2px solid white
+}
+
+nav{
+    background-color: white;
+    color: black;
+    padding: 2% 5% 4% 2%;
+}
+
+.rodape-index {
+    display: inline-block;
+    border: 2px solid whitesmoke;
+}
+
+
+.facebook-image {
+    width: 32px ;
+}
+
+.instagram-image {
+    width: 32px;
+}
+
+.twitter-image {
+    width: 32px;
+}
+
+
+
+/* AQUI É SOBRE A PÁGINA FUNCIONÁRIOS */
+
+
+.p-funcionarios-calipso{
+    padding-right: 20%;
+    padding-left: 30%;
+}
+
+.funcionarios {
+    background-color: black;
+    margin: auto;
+    padding-right: 10%;
+    padding-left: 25%;
+    color: white;
+    font-size: xx-large;
+}
+
+.lista-funcionarios {
+    background-color: rgb(230, 231, 231);
+    color: rgb(54, 53, 53);
+    font-size: xx-large;
+    margin: auto;
+}
+
+
+
+/* AQUI É SOBRE A PÁGINA ESTOQUE */
+
+.p-controle-de-estq-Calipso {
+    padding-left: 35%;
+    padding-right: 40%;
+}
+
+.controle-estoque {
+    border: 2px solid gainsboro;
+}
+
+.tr-controle-estoque {
+    border: 2px solid white;
+}
+
+td {
+    background-color: azure;
+}
+
+
+/* AQUI É SOBRE A PÁGINA ADD PRODUTO */
+
+.p-add-produto-Calipso {
+    padding-left: 30%;
+    padding-right: 25%;
+}
+
+.botao-add-produto {
+    border: 1px solid gray;
+    background-color: rgb(247, 247, 247);
+    color: rgb(0, 0, 0);
+}
+
+.adicionar-produto {
+    margin: auto;
+    padding-left: 15%;
+    padding-right: 15%;
+    background-color: gray;
+    color: white;
+    font-size: xx-large;
+}
+
+.formulario {
+    font-size: xx-large;
+}
+
+

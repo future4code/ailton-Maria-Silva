@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Calipso Moda Praia</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css">
 </head>
 <body>
-    <header>
+    <header class="rodape-index" >
         <h1>Bem-vind@ ao <em>Calipso Moda Praia</em>!</h1>
         <p>Para todes os corpos!</p>
     </header>
 
-    <nav>
+    <nav class="cabecalho">
         <a href="index.html">Página Inicial |</a>
         <a href="ctrl-estoque.html">Controle de Estoque |</a>
         <a href="add-produto.html">Adicionar Produto |</a>
@@ -22,22 +23,26 @@
     <main>
         <!-- ADICIONAR CONTEÚDO PRINCIPAL SOBRE SUA LOJINHA -->
 
-        <div>Moda praia biodegradável pensada para corpos reais!</div>
+        <div>
 
-        <div>Tecido com tecnologia easy care, respirável e proteção UV80.</div>
+        <p>Moda praia biodegradável pensada para corpos reais!</p>
+        
+        <p>Tecido com tecnologia easy care, respirável e proteção UV80.</p>
 
-        <div>Cupom de 10% de desconto para a primeira compra CALIPSO-10.</div>
+        <p>Cupom de 10% de desconto para a primeira compra CALIPSO-10.</p>
 
-        <div>Entregamos em todo território nacional.</div>
+        <p>Entregamos em todo território nacional.</p>
+
+        </div>
 
     </main>
 
     
     <footer>
         <p>Siga-nos nas redes sociais!</p>
-        <img src="https://icones.pro/wp-content/uploads/2021/02/facebook-icone-noir.png"/>
-        <img src="https://i1.wp.com/www.multarte.com.br/wp-content/uploads/2019/03/logo-instagram-png-sem-fundo10.png?fit=696%2C696&ssl=1"/>
-        <img src="data:image/png;base64,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"/>
+        <img class="facebook-image" src="https://icones.pro/wp-content/uploads/2021/02/facebook-icone-noir.png"/>
+        <img class="instagram-image" src="https://i1.wp.com/www.multarte.com.br/wp-content/uploads/2019/03/logo-instagram-png-sem-fundo10.png?fit=696%2C696&ssl=1"/>
+        <img class="twitter-image" src="https://w7.pngwing.com/pngs/567/358/png-transparent-white-and-black-phone-logo-whatsapp-computer-icons-mobile-phones-logo-black-and-white-text-silhouette-instant-messaging.png">
     </footer>
 </body>
 </html>
