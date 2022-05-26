@@ -1,0 +1,181 @@
+/** 
+  *
+  *  ESTILOS GERAIS 
+  *
+  **/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Roboto;
+}
+
+h2 {
+    background-color: #fe7e02;
+    padding: 10px 5px 10px 5px;
+    color: white;
+    text-align: center;
+}
+
+input {
+    height: 20px;
+    width: 500px;
+}
+
+button:focus {
+    color: white;
+}
+
+img {
+    width: 100px;
+}
+
+div>p:first-child {
+    display: inline;
+}
+
+div img {
+    background: black;
+}
+
+.botao-amarelo {
+    background-color: #ffaf43;
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+    color: white;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.botao-amarelo:hover {
+    background-color: #c44f00;
+}
+
+.container {
+    height: 400px;
+    text-align: center;
+}
+
+.icone {
+    height: 15px;
+}
+
+
+/** 
+  *
+  *  ESTILOS HOME 
+  *
+  **/
+
+#container-de-descricao {
+    background-color: #2274a5;
+    color: white;
+    padding-top: 10%;
+    padding-bottom: 0%;
+
+}
+
+#container-de-descricao>ol {
+    padding: 15px 0px;
+}
+
+#container-para-comprar {
+    background-color: #e7eb90;
+}
+
+#container-para-comprar>p {
+    color: #c44f00;
+    padding: 100px 0;
+    font-size: 60px;
+}
+
+
+
+/**
+  *
+  *  ESTILOS COMPRAR 
+  *
+  **/
+
+div:nth-child(2),
+div:last-child {
+    text-align: center;
+}
+
+table {
+    width: 60%;
+    text-align: center;
+    margin: auto;
+}
+
+.container-tabela {
+    margin: block;
+}
+
+td button {
+    background-color: #fadf63;
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    color: black;
+}
+
+td button:active {
+    color: white
+}
+
+#botao-camiseta:hover {
+    background-color: #635a3d 
+}
+
+#botao-jeans:hover {
+    background-color: #635a3d
+}
+
+#botao-chinelo:hover {
+    background-color: #635a3d
+}
+
+.container-do-search {
+    margin-top: 20px;
+    height: 100px;
+}
+
+#input-pesquisa {
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 1px solid black;
+}
+
+#back-button {
+    background-color: white;
+    width: 100px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 10px;
+    color: black;
+}
+
+#back-button:hover {
+    background-color: #635a3d
+}
+
+.camiseta-tabela {
+    width: 50px;
+}
+
+.jeans-tabela {
+    width: 50px;
+}
+
+.chinelo-tabela {
+    width: 50px;
+}
+
+.imagem-lupa {
+    width: 10px;
+}
