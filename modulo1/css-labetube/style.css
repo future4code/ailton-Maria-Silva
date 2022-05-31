@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-style: helvetica;
+}
+
+/*   HOME    */
+
+.container {
+    display: grid;
+    grid-template-rows: 10vh 60vh 10vh;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.home-header{
+    background-color: orange;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 4p;
+    padding-right: 8px;
+}
+
+.labetube{
+    padding-left: 16px;
+}
+
+.main-video-home{
+    /*background-color:red;*/
+    grid-column: 1 / -1;
+    /*
+    grid-template-columns: 200px 1fr 100px;
+    gap: 30px;
+    /*grid-template-areas: 'video 1 video 2 video 3 video 4' 
+                         'video 5 video 6 video 7 video 8' */ 
+}
+
+section{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 16px;
+    border: 2px solid black;
+    padding-right: 15%;
+    padding-left: 15%;
+}
+
+p{
+    display:flex;
+    align-items: center;
+    justify-self: center;
+}
+
+video{
+    display: grid;
+    height: 30vh;
+    width: 30vh;
+    justify-self: center;
+    align-self: center;
+}
+
+.video {
+    width: 30vh;
+    justify-self: center;
+    align-self: center;
+    border: 1px solid gray;
+}
+
+footer{
+    background-color: orange;
+    text-align: center;
+    justify-content: space-around;
+    grid: 1/-1;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 4p;
+    padding-right: 4px;
+    font-size: x-large;
+}
+
+
+/* PÁGINAs VÍDEO  */
+
+header{
+    background-color: orange;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 4px;
+    padding-left: 14p;
+    padding-right: 8px;
+}
+
+.futuretube{
+    padding-left: 16px;    
+}
+
+.container-pag-video1{
+    display: grid;
+    grid-template-rows: 10vh 60vh 10vh;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.divisao-pagina1{
+    display:flex;
+    align-items: center;
+    align-items: center;
+    margin: 25%;
+}
+
+.pagina1video{
+    height: 60vh;
+    width: 60vh;
+    display:flex;
+    align-items: center;
+    align-self: center;
+
+}
+
+.container-pag-video2{
+    display: grid;
+    grid-template-rows: 10vh 60vh 10vh;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.divisao-pagina2{
+    display:flex;
+    align-items: center;
+    align-items: center;
+}
+
+.pagina2video{
+    height: 60vh;
+    width: 60vh;
+    display:flex;
+    align-items: center;
+    align-self: center;
+}
