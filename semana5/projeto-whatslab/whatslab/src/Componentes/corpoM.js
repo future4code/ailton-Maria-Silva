@@ -2,33 +2,43 @@ import React from "react"
 import styled from "styled-components";
 
 const Container = styled.div`
-max-width: 600px;
-height: 100vh;
-border: 4px solid fuchsia;
-flex: 1 1 0%;
 display: flex;
+justify-content: center;
 `
 
 const DivGrandona =styled.div`
-display:flex;
-justify-content:center;
-box-sizing: border-box;
+max-width: 600px;
+height: 98vh;
+border: 4px solid black;
+flex: 1 1 0%;
+display: flex;
+flex-direction: column;
 `
 
 const DivMedia = styled.div`
-max-width: 600px;
-height: 100vh;
-border: 4px solid fuchsia;
-flex: 1 1 0%;
-display: flex;
-`
-const DivRecebeMensagem = styled.div`
 flex: 1 1 0%;
 display: flex;
 flex-direction: column;
 -webkit-box-pack: end;
 justify-content: flex-end;
-padding: 25px;
+padding: 20px;
+`
+const DivRecebeMensagem = styled.div`
+display: flex;
+`
+
+const InputDeUsuario = styled.input`
+width: 100px;
+display: inline-block;
+`
+
+const InputDeMensagem = styled.input`
+display: inline-block;
+width:450px;
+`
+
+const BotaoEnviar = styled.button`
+width: 50px;
 `
 
 
@@ -57,31 +67,32 @@ class CorpoMensagem extends React.Component {
 
         const novosUsuarios = [...this.state.usuarioBatePapo, novoUsuario];
         this.setState({usuarioBatePapo: novosUsuarios}); 
-        this.setState({ novosUsuarios: ""});
+        this.setState({ valorInputNomeUsuario: ""});
+        this.setState({ valorInputMensagem: ""});
     };
 
     render() {
         const listaDeComponentes = this.state.usuarioBatePapo.map((usuario) =>{
             return (
-                <p> {usuario.nome} {usuario.mensagem} </p>
+                <p> {usuario.nome}: {usuario.mensagem} </p>
                 );
             });
 
             return (
-                <DivGrandona>
-                    <DivMedia>
-                    <div>{listaDeComponentes}</div>
-                    <DivRecebeMensagem>
-                        <input value={this.state.valorInputNomeUsuario} onChange={this.onChangeInputUsuario} placeholder = {"Nome"}/> 
-                        <input value={this.state.valorInputMensagem} onChange={this.onChangeInputMensagem} placeholder={"Mensagem"}/>
-                        <button onClick={this.adicionarMensagemUsuario}>Enviar</button>
-                    </DivRecebeMensagem>
-                    </DivMedia>
-                </DivGrandona>
+                <Container>
+                    <DivGrandona>
+                        <DivMedia>{listaDeComponentes}</DivMedia>
+                        <DivRecebeMensagem>
+                            <InputDeUsuario value={this.state.valorInputNomeUsuario} onChange={this.onChangeInputUsuario} placeholder = {"Usuário"}/> 
+                            <InputDeMensagem value={this.state.valorInputMensagem} onChange={this.onChangeInputMensagem} placeholder={"Mensagem"}/>
+                            <BotaoEnviar onClick={this.adicionarMensagemUsuario}>Enviar</BotaoEnviar>
+                        </DivRecebeMensagem>
+                    </DivGrandona>
+                </Container>
                 );
 
             }
 
     }
 
-export default CorpoMensagem;
+    export default CorpoMensagem;
