@@ -22,10 +22,7 @@ function CardPequeno(props) {
     return (
         <PequenoContainerCard>
             <ImagemCardPequeno src={ props.imagem } />
-        <div>
-            <b> { props.label } </b><text> { props.labeled }</text>
-        </div>
-
+            <div> <b> { props.label } </b><text> { props.labeled }</text></div>
         </PequenoContainerCard>
     )
 }

@@ -2,7 +2,9 @@ import React from 'react';
 import CardGrande from './components/CardGrande/CardGrande';
 import ImagemButton from './components/ImagemButton/ImagemButton';
 import CardPequeno from './components/CardPequeno/CardPequeno';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import carolepetite from './img/carolepetite.jpg';
+import calipso from './img/Calipsomoda.png';
 
 const ContainerDoApp = styled.div`
   display: flex;
@@ -17,7 +19,8 @@ const ContainerPaginaDaSessao = styled.div`
 `
 
 const EstiloSessa2 = styled.h2`
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-bottom: 20px;
 `
 
@@ -28,13 +31,13 @@ function App() {
       <ContainerPaginaDaSessao>
         <EstiloSessa2>Dados pessoais</EstiloSessa2>
         <CardGrande 
-          imagem="https://scontent-gru2-2.xx.fbcdn.net/v/t39.30808-6/267325354_5249802238382258_5605791858038347308_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=2L5hfEGrH30AX-rRg5e&_nc_oc=AQkGHjiEq2GFAYZey4fOFmcEJCcGoK_CPodbFT-fOv1AHcBE-pAjElS0NiPzxuFf6fs&_nc_ht=scontent-gru2-2.xx&oh=00_AT8gJRumAq1tCPgYNUg5r5Su30gbt4JzSZLeRWdtM_Mi8Q&oe=62A439F4" 
+          imagem= {carolepetite}
           nome="Maria Caroline" 
           descricao="Oi, sou a Carol, formada em Design de Moda, trabalhei 10 anos na área e estou em transição de carreira. Também sou mãe da neném Helena, e dos gatinhos Bruce e Petite."
         />
         
         <ImagemButton 
-          imagem="data:image/png;base64,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" 
+          imagem="data:image/png;base64,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" 
           texto="Ver mais"
         />
 
@@ -53,9 +56,9 @@ function App() {
       <ContainerPaginaDaSessao>
         <EstiloSessa2>Experiências profissionais</EstiloSessa2>
         <CardGrande 
-          imagem="https://s3.amazonaws.com/future4.com.br/static/headf4-c492117ca2373dc85ca81bf715b3dc2a.png" 
-          nome="Labenu" 
-          descricao="Formando desenvolvedores para o mercado de trabalho!" 
+          imagem= {calipso} 
+          nome="Calipso Moda Praia" 
+          descricao="Designer, modelista, modelo e costureira." 
         />
         
         <CardGrande 

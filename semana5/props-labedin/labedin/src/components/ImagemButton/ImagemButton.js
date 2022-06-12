@@ -20,7 +20,7 @@ const ImagemBotaoContainer = styled.img`
 function ImagemButton(props) {
     return (
         <BotaoContainer>
-            <img src={ props.imagem }/>
+            <ImagemBotaoContainer src={ props.imagem }/>
             <p>{ props.texto }</p>
         </BotaoContainer>
 

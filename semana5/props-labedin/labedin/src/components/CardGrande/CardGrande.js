@@ -26,19 +26,16 @@ const DivisaoCardGrande = styled.div `
     justify-items: flex-start;
 `
 
-
-
-
 function CardGrande(props) {
     return (
-        <ImagemGrandeCardContainer>
-            <ImagemGrandeCardContainer src={ props.imagem } />
-            <DivisaoCardGrande>
-                <TituloH4>{ props.nome }</TituloH4>
-                <p>{ props.descricao }</p>
-            </DivisaoCardGrande>
-        </ImagemGrandeCardContainer>
+        <GrandeCardContainer>
+                <ImagemGrandeCardContainer src={ props.imagem } />
+                <DivisaoCardGrande>
+                    <TituloH4>{ props.nome }</TituloH4>
+                    <p>{ props.descricao }</p>
+                </DivisaoCardGrande>    
+        </GrandeCardContainer>
     )
-}
+};
 
 export default CardGrande;
