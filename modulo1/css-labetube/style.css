@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-style: helvetica;
+}
+
+/*   HOME    */
+
+.container {
+    display: grid;
+    grid-template-rows: 10vh 100% 10vh;
+    grid-template-columns: repeat(1, 1fr);
+    /*border: 3px solid blue;*/
+}
+
+.home-header{
+    background-color: orange;
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+    padding-right: 8px;
+}
+
+.labetube{
+    padding-left: 8%;
+}
+
+.main-video-home{
+    /*background-color:red;*/
+
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+   /* grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);*/
+    gap: 16px;
+    border: 2px solid black;
+    padding-right: 15%;
+    padding-left: 15%;
+}
+
+p{
+    display:flex;
+    align-items: center;
+    justify-self: center;
+}
+
+video{
+    display: grid;
+    height: 30vh;
+    width: 30vh;
+    justify-self: center;
+    align-self: center;
+}
+
+.video {
+    width: 30vh;
+    justify-self: center;
+    align-self: center;
+    border: 1px solid gray;
+}
+
+footer{
+    background-color: orange;
+    text-align: center;
+    justify-content: space-around;
+
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: x-large;
+}
+
+
+/* PÁGINAs VÍDEO  */
+
+.header-pagina-video{
+    background-color: orange;
+    /*grid-column: 1 / -1;*/
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    padding-bottom: 2%;
+    padding-left: 4%;
+    padding-right: 2%;
+}
+
+.futuretube{
+    padding-top:2%;
+    padding-left: 2%;  
+    display:flex;
+    justify-content: space-evenly;  
+}
+
+.container-pag-video{
+    display: grid;
+    /*grid-template-columns: */
+    grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.divisao-pagina{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid fuchsia;
+
+}
+
+.titulo-do-video-na-pagina{
+    display: flex;
+    align-items: center;
+    align-self: center;
+}
+
+.paginavideo{
+    height: 80vh;
+    width: 100vh;
+    display:flex;
+    align-items: center;
+    align-self: center;
+
+}
+
+
+@media screen and (min-width:320px) and (max-width: 480px){
+    .container{
+        width: 100%;
+       /* height: auto; */
+    }
+
+    .botao-header{
+        padding:10px;
+    }
+
+    .container-pag-video{
+        display: grid;
+        width: 40%;
+    }
+}
