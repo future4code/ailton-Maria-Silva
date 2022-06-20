@@ -1,0 +1,125 @@
+*{
+    margin:0;
+    padding: 0;
+    font-style: helvetica;
+    font-size: 20px;
+}
+
+body {
+    background-color: white;
+    text-align: center;
+    display: inline-block;
+    margin-right: 15%;
+    margin-left: 15%;  
+}
+
+footer {
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+ul {
+    padding-top:5%;
+    padding-bottom: 5%;
+    padding-inline-start: 40px;
+    list-style-type: disc;
+    display: inline-block;
+    padding-inline-start: 40px;
+    text-align-last: justify;
+}
+
+/*
+    HOME
+*/
+
+.caixa-banner {
+    background-size: cover;
+    display: flex;
+    height: 73vh;
+    align-self: center;
+}
+
+.principal {
+    border: 1px solid rgb(122, 221, 238);
+}
+
+.geral-sobre-mim-home{
+    padding-top: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 10%;
+}
+
+.paragrafo-sobre-mim{
+    padding-bottom: 5%;
+}
+
+.galeria-projetos {
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+/*.educacao {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: black;
+    color: white;
+}
+
+.habilidades {
+    padding-top: 0%;
+    padding-bottom: 5%;
+    background-color: black;
+    color: white;
+}
+*/
+
+.menu-blackjack:hover{
+    background-color:black;
+    color: white;
+}
+
+.icone-projeto-blackjack:active{
+    width: 70px;
+    align-self: center;
+    
+}
+/*
+.icone-projeto-blackjack:hover{
+    width: 70px;
+}
+*/
+
+.formulario-contato{
+    font-size: 10px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.linkedin {
+    width: 45px;
+    background-color: white;
+    border: 1px solid white;
+}
+
+.github {
+    width: 45px;
+    background-color: white;
+    border: 1px solid white;
+}
+
+/*
+    PROJETOS
+*/
+
+
+.menu-index:hover{
+    background-color:black;
+    color: white;
+}
+
+.projeto1{
+    padding-bottom: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
