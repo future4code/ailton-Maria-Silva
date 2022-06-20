@@ -1,0 +1,136 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+header{
+    border: 1px solid mediumvioletred;
+    background-color: mediumvioletred;
+    display: flex;
+    height: 8vh;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+}
+
+.logo-header-bolo{
+    width:30px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+main{
+    border: 1px solid black;
+    display: flex;
+    flex-grow: 1;
+}
+
+.menu-lateral-esquerdo{
+    background-color:#f2d0e0;
+    display:block;
+    display:flex; 
+    flex-direction: column;
+    align-items: center;
+    padding-right: 15%;
+}
+
+.menu-lateral-direito{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer{
+    background-color: mediumvioletred;
+    text-align: center;
+}
+
+
+/* --IMAGENS-- */
+
+.foto-bolo-1{
+    border: 1px solid darkgray;
+    width:30vh;
+    display:flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: space-around;
+}
+
+.foto-bolo-2{
+    border: 1px solid darkgray;
+    width:30vh;
+    display:flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.foto-bolo-3{
+    border: 1px solid darkgray;
+    width:30vh;
+    display:flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.foto-bolo-4{
+    border: 1px solid darkgray;
+    width:30vh;
+    display:flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.foto-bolo-5{
+    border: 1px solid darkgray;
+    width:30vh;
+    display:flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.foto-bolo-6{
+    border: 1px solid darkgray;
+    width:30vh;
+    display:flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.foto-bolo-7{
+    border: 1px solid darkgray;
+    width:30vh;
+    display:flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.setinha-main-1{
+    width: 40px;
+}
+.setinha-main-2{
+    width: 40px;
+}
+.setinha-main-3{
+    width: 40px;
+}
+.setinha-main-4{
+    width: 40px;
+}
+
+.casinha-main{
+    width: 40px;
+}
+.produtos-main{
+    width: 40px;
+}
+.carrinho-main{
+    width: 40px;
+}
+.perfil-main{
+    width: 40px;
+}
