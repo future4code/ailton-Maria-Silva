@@ -1,48 +1,54 @@
+import React from 'react';
 import './App.css';
 import axios from 'axios';
 import styled from 'styled-components';
-import CadastroUsuario from './Componentes/CadastroUsuario'
+import CadastroUsuario from './Componentes/CadastroUsuario';
+import TelaListaUsuarios from './Componentes/TelaListaUsuarios';
+
 
 const Container = styled.div`
-display: flex;
-flex-direction: center;
-align-items:center;
-border: 4px black solid;
+display:block;
+margin-right: 35%;
+margin-left:35%;
+margin-top:8%;
+justify-content:space-evenly;
 `
 
-class App extends React.Component {
-  state ={
 
+
+
+class App extends React.Component {
+
+  state = {
+    telaAtual: "cadastro"
   }
 
+  escolheTela = () => {
+    switch (this.state.telaAtual){
+      case "cadastro":
+        return <CadastroUsuario irParaLista={this.irParaLista} />
+      case "lista":
+        return <TelaListaUsuarios irParaCadastro={this.irParaCadastro} />
+      default:
+        return <div> Erro! Página não encontrada:</div>
+    }
+  };
 
-  
+  irParaCadastro = () => {
+    this.setState ({telaAtual: "cadastro"})
+  }
 
+  irParaLista = () => {
+    this.setState ({telaAtual: "lista"})
+  }
   render() {
-
-    const imprimeUsuariosNaTela = this.state.listaDeUsuarios?.list.map((usuario) =>{
-      return 
-
-          <div>
-            <p key={usuario.id}> {usuario.nome} </p>
-            <p key={usuario.id}> {usuario.email} </p>
-          </div>
-        this.listaDeUsuarios
-    });
 
     return (
       <Container>
-        <div>
-          <button onClick={}>Cadastro Usuario</button>
-
-          <button onClick={} >Lista de Usuario</button>
-        </div>
-
-        <CadastroUsuario />
-
+        {this.escolheTela()}
       </Container>
-    );
-  }
-}
+    )
+  } 
+};
 
 export default App;
