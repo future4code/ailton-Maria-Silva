@@ -1,6 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-//import styled from 'styled-components'
+import styled from 'styled-components';
+
+const CardTrack = styled.div`
+display: flex;
+flex-direction:row;
+display: inline-block;
+align-items: center;
+`
 
 class AdicionaMusicas extends React.Component{
 
@@ -45,28 +52,27 @@ class AdicionaMusicas extends React.Component{
     render (){
         return(
             <div>
-                <h2> Adicione Músicas </h2>
-                <div>
-                    <label>Nome da playlist:</label>
-                    <option></option>
+                <h4> Adicione Músicas </h4>
+                <CardTrack>
 
-                    <label>Nome da Música:</label>
+                    <p>Nome da Música:</p>
                     <input placeholder={"Nome da música"}
                     value={this.state.nameInput}
                     onChange={this.adicionaNome} />
 
-                    <label>Nome do artista/banda:</label>
+                    <p>Nome do artista/banda:</p>
                     <input placeholder={"Artista que performa"}
                     value={this.state.artistInput}
                     onChange={this.adicionaArtista} />
 
-                    <label>Link da Música:</label>
+                    <p>Link da Música:</p>
                     <input placeholder={"Link da música"}
                     value={this.state.urlInput}
                     onChange={this.adicionaUrlMusica}  />
                     
-                    <button onClick={this.recebeTrack}>Adicionar</button>
-                </div>
+                    <div><button onClick={this.recebeTrack}>Adicionar</button></div>
+                    
+                </CardTrack>
             </div>
         );
     }

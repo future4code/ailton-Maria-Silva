@@ -37,7 +37,7 @@ class CriarPlaylist extends React.Component{
             <div>
                 <h2>Crie uma playlist!</h2>
                 <div>
-                    <label>Crie uma Playlist:</label>
+                    <p>Crie uma Playlist:</p>
                     <input placeholder={"Playlist"}
                     value={this.state.playlists}
                     onChange={this.onChangePlaylist} >

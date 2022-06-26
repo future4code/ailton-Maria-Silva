@@ -5,7 +5,7 @@ import React from 'react';
 class DetalhesPlaylist extends React.Component {
 
     state = {
-        detalhesPlay: {},
+        detalhesPlay: [{}],
         musicas:""
     }
 
@@ -17,9 +17,9 @@ class DetalhesPlaylist extends React.Component {
         if(this.state.detalhesPlay !== prevState.detalhesPlay)
         this.pegarMusica()
     }
-
+    
     pegarDetalhes = () => {
-        const urlPlay = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?${this.props.playlists}`
+        const urlPlay = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists`
         axios.get(this.detalhesPlay, urlPlay,{
             headers: {
                 Authorization: "maria-silva-ailton"
@@ -31,21 +31,32 @@ class DetalhesPlaylist extends React.Component {
 
     pegarMusica = () => {
         const url = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/:playlistId/tracks`
-        axios.get(this.state.detalhesPlay.tracks)
+        axios.get(this.state.detalhesPlay.tracks, url, {
+            headers: {
+                Authorization: "maria-silva-ailton"
+            }
+        })
         .then((response) => this.setState({musicas: response.data.name}))
         .catch((error) => console.log(error.response))
     }
 
-    render(){
+    render() {
+
         return(
             <div>
-                <h2>Pesquise sua música</h2>
+                <h2>Detalhes da Playlist</h2>
 
                 <div>
-                    <label>Procure aqui:</label>
-                    <input></input>
-                    <button>Pesquisar</button>
+                <div>
+                    {this.state.detalhesPlay.name && this.state.musicas ? (
+                        <div>
+                            <p>Nome:{this.state.detalhesPlay.name}</p>
+                            <p>Planeta natal:{this.state.musicas}</p>
 
+                        </div>
+                    ) : <p> Carregando </p> }
+                </div>
+                    
                 </div>
             </div>
         )

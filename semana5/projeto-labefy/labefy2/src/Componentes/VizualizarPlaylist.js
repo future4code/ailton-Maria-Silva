@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import AdicionaMusicas from './AdicionaMusica';
 
 const CardPlaylist = styled.div`
 border: none;
@@ -8,8 +9,12 @@ border-bottom: 1px solid gray;
 padding: 10px;
 margin: 10px;
 width: 300px;
-display: flex;
+display: inline;
 justify-content: space-between;
+`
+const BotaoPequeno = styled.button`
+height: 25px;
+width: 25px;
 `
 
 class VisualizarPlaylist extends React.Component{
@@ -23,7 +28,7 @@ class VisualizarPlaylist extends React.Component{
     }
 
     pegarPlaylists = async() => {
-        const urlMostraPlaylist = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists/search?name=string`
+        const urlMostraPlaylist = `https://us-central1-labenu-apis.cloudfunctions.net/labefy/playlists`
 
         try{
             const res = await axios.get(urlMostraPlaylist, {
@@ -55,10 +60,14 @@ class VisualizarPlaylist extends React.Component{
 
         const listaPlaylists = this.state.listaUsuario.map((lista) => {
             return (
-            <CardPlaylist>
-                <p key={lista.id}> {lista.name} </p>
-                <button onClick={() =>this.deletarPlaylist(lista.id)}> x </button>
-            </CardPlaylist>
+            <div>
+                <CardPlaylist>
+                    <h2 key={lista.id}> {lista.name} </h2>
+                    <BotaoPequeno onClick={() =>this.deletarPlaylist(lista.id)}> x </BotaoPequeno>
+                    <AdicionaMusicas/>
+                </CardPlaylist>
+                
+            </div>
             )
         })
 
@@ -67,7 +76,8 @@ class VisualizarPlaylist extends React.Component{
                 <h2> Playlists Criadas </h2>
                 <div>
                     {listaPlaylists}
-                </div>              
+                </div>
+                              
             </div>
         );
     }
