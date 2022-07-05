@@ -25,10 +25,10 @@ const SecaoComentario = (props) => {
 			<InputComment
 				className={'input-comentario'}
 				placeholder={'Comentário'}
-				value={recebeComentario}
+				value={setRecebeComentario}
 				onChange={onChangeComentario}
 			/>
-			<button onClick={() => { props.enviarComentario() }} >Enviar</button>
+			<button onClick={() => { props.enviarComentario(recebeComentario) }} >Enviar</button>
 		</CommentContainer>
 	)
 }

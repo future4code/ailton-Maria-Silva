@@ -22,7 +22,7 @@ const Post = (props) => {
       setCurtido(!curtido)
       setNumeroCurtidas(numeroCurtidas - 1)
     } else {
-      setCurtido(curtido)
+      setCurtido(!curtido)
       setNumeroCurtidas(numeroCurtidas + 1)
     }
   };
@@ -36,7 +36,7 @@ const Post = (props) => {
     setComentarios({
       comentarios: listaDeComentarios,
       comentanto: false,
-      setNumeroComentarios: numeroComentarios + 1
+      numeroComentarios: setNumeroComentarios + 1
     })
   }
   const iconeCurtida = curtido ? (iconeCoracaoPreto) : (iconeCoracaoBranco)
