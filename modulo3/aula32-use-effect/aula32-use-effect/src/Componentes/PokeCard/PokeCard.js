@@ -16,16 +16,16 @@ const PokeContainer = styled.div`
 `
 
 
-function PokeCard (props) {
+const PokeCard = (props) => {
 
-    const [pokemon, setPokemon] = useState({});
+    const [currentPokemon, setCurrentPokemon] = useState({});
 
-    pegaPokemon = pokeName => {
+    const pegaPokemon = (pokeName) => {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
-        .then(response =>{
-            setPokemon({ pokemon: response.data });
-        }).catch(error =>{
-            console.log(error);
+        .then((response) =>{
+            setCurrentPokemon(response.data);
+        }).catch((error)=>{
+            console.log(error)
         });
     };
 
@@ -33,15 +33,15 @@ function PokeCard (props) {
 
         <PokeContainer>
             <div>
-                <p>{pokemon.name}</p>
-                <p>{pokemon.weight} Kg</p>
+                <p>{currentPokemon.name}</p>
+                <p>{currentPokemon.weight} Kg</p>
                 {pokemon.types && <p>{pokemons.types[0].type.name}</p>}
                 {pokemon.sprites && (
                     <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                 )}
             </div> 
         </PokeContainer>
-    )
+    );
 };
 
 
