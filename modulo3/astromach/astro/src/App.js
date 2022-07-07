@@ -23,7 +23,7 @@ padding: 8%;
 
 function App() {
   
-  const [currentPage, setCurrentPage] = useState("cardMatchs")
+  const [currentPage, setCurrentPage] = useState("")
 
   const renderPage = () => {
     if (currentPage === "cardMatch"){
