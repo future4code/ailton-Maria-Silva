@@ -17,7 +17,7 @@ const SecaoComentario = (props) => {
 	const [recebeComentario, setRecebeComentario] = useState ("")
 
 	const onChangeComentario = (e) => {
-		setRecebeComentario({recebeComentario: e.target.value})
+		setRecebeComentario(e.target.value)
 	}
 
 	return (
@@ -25,7 +25,7 @@ const SecaoComentario = (props) => {
 			<InputComment
 				className={'input-comentario'}
 				placeholder={'Comentário'}
-				value={setRecebeComentario}
+				value={recebeComentario}
 				onChange={onChangeComentario}
 			/>
 			<button onClick={() => { props.enviarComentario(recebeComentario) }} >Enviar</button>
