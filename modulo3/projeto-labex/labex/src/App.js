@@ -1,11 +1,11 @@
 import React from 'react'
-import HomePage from './Componentes/HomePage';
+import RouterX from './Componentes/Router';
 
 
 function App() {
   return (
     <div >
-      <HomePage />
+      <RouterX />
     </div>
   );
 }

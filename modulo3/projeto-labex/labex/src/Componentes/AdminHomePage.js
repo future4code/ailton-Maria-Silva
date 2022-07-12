@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
     border: 2px solid whitesmoke;
@@ -17,33 +17,37 @@ const Container = styled.div`
     text-align: center;
 `
 
-function LoginPage () {
+
+function AdmHome () {
     const navigate = useNavigate();
 
+    const createTrip = () =>{
+        navigate("/create-trip")
+    }
     const goBack = () =>{
         navigate(-1)
     }
 
-    const getInAdm = () =>{
-        navigate("/admin-home-page")
+    const logOut = () =>{
+        alert ("Você se desconectou!")
     }
-
-    return(
+    
+    return (
         <Container>
-            <h1> Olá, eu sou a página Login Page</h1>
             <div>
-                <h2>Login</h2>
-            </div>
-            <div>
-                <input type="email" placeholder="E-mail"/>
-                <input type="password" placeholder="Senha"/>
+                <h2> Painel Administrativo </h2>
             </div>
             <div>
                 <button onClick={goBack}>VOLTAR</button>
-                <button onClick={getInAdm}>ENTRAR</button>
+                <button onClick={createTrip}>CRIAR VIAGEM</button>
+                <button onClick={logOut}>LOUGOUT</button>
+            </div>
+            <div>
+                <p> Ver Detalhes das Viagens </p>
             </div>
         </Container>
+
     )
 };
 
-export default LoginPage;
+export default AdmHome;
