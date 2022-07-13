@@ -1,20 +1,29 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import { useNavigate} from 'react-router-dom';
 
 const Container = styled.div`
-    border: 2px solid whitesmoke;
-    background-color: black;
+    //border: 2px solid whitesmoke;
+    //background-color: black;
     color: white;
     margin-left: 20%;
     margin-right: 20%;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    width: 60vw;
-    height: 80vh;
+    margin-top: 8%;
+    margin-bottom: 8%;
+    width: 64vw;
+    height: 84vh;
     justify-content: center;
     align-items: center;
     text-align: center;
+`
+const CreateTripInput = styled.input`
+    width: 80%;
+    height: 30px;
+    border-color: yellow;
+    border-width: 1px;
+    padding: 4px 8px;
+    margin: 0px 0px 15px;
+
 `
 
 function CreateTrip () {
@@ -26,6 +35,14 @@ function CreateTrip () {
     const createTrip = () => {
         alert("Viagem criada com sucesso!!!")
     };
+    
+    useEffect(() => {
+        if(localStorage.getItem('token') === null){
+            navigate('/login')
+        }
+    },[])
+
+
      return(
         <Container>
             <h1> Olá, eu sou a página de Criar VIAGENS</h1>
@@ -33,11 +50,11 @@ function CreateTrip () {
                 <h2>Crie uma viagem</h2>
             </div>
             <div>
-                <input type="text" placeholder="Nome da viagem" />
-                <input type="text" placeholder="Escolha um Planeta" />
-                <input type="date" placeholder="dd/mm/aaaa" />
-                <input type="text" placeholder="Descrição" />
-                <input type="text" placeholder="Duração em dias" />
+                <CreateTripInput type="text" placeholder="Nome da viagem" />
+                <CreateTripInput type="text" placeholder="Escolha um Planeta" />
+                <CreateTripInput type="date" placeholder="dd/mm/aaaa" />
+                <CreateTripInput type="text" placeholder="Descrição" />
+                <CreateTripInput type="text" placeholder="Duração em dias" />
             </div>
             <div>
                 <button onClick={goBack}>Voltar</button>
