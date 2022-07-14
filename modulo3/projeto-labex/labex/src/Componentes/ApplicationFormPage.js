@@ -1,22 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-
-const Container = styled.div`
-    //border: 2px solid whitesmoke;
-    //background-color: black;
-    color: white;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 8%;
-    margin-bottom: 8%;
-    width: 64vw;
-    height: 84vh;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-`
-
+import axios from 'axios';
+import {useEffect} from 'react';
+import {useState} from 'react';
+import { Container } from './Style';
+import { CreateTripInput } from './Style';
+import { SelectTrip } from './Style';
 
 function ApplicationForm () {
     const navigate = useNavigate();
@@ -24,23 +13,73 @@ function ApplicationForm () {
     const goBack = () => {
         navigate(-1)
     };
-    const sendIn = () => {
-        alert("Aplicação para viagem recebida com sucesso!")
+
+    const [tripsList, setTripsList] = useState ([]);
+    const [tripName, setTripName] = useState("");
+    
+    const changeTripName = (e) => {
+        setTripName(e.target.value)
     }
+
+    useEffect (()=>{
+        axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trips')
+            .then((response)=>{
+                setTripsList(response.data?.trips)
+                console.log(response.data.trips)
+            }).catch((error)=>{
+                console.log(error)
+            })
+    },[]);
+
+    const sendIn = () => {
+        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trips/:id/apply`)
+        .then((response) =>{
+            console.log(response);
+            alert("Aplicação para viagem recebida com sucesso!");
+        }).catch((error)=>{
+            console.log(error);
+        })
+    };
+    
     return(
         <Container>
-            <h1> Olá, eu sou a página Application Form</h1>
             <div>
-                <h2>Inscreva-se para uma viagem</h2>
+                <h2>INSCREVA-SE PARA UMA VIAGEM</h2>
             </div>
             <div>
-                
-                <input type="text" placeholder="Escolha uma viagem!"/>
-                <input type="text" placeholder="Nome Completo"/>
-                <input type="number" placehoder="Idade"/>
-                <input type="text" placehoder="Texto de Candidatura"/>
-                <input type="text" placeholder="Profissão"/>
-                <input type="text" placeholder="Escolha um país"/>
+                <SelectTrip onChange={changeTripName}>
+                    <option value={""}> Escolha uma Viagem </option> 
+                    {tripsList.map((trips)=>{
+                        return (
+                    <option key={trips.id} value={trips.name}>
+                        {trips.name}
+                    </option>
+                            )
+                        })} 
+                    </SelectTrip>
+                <CreateTripInput 
+                    type="text" 
+                    placeholder="Nome Completo"
+                    //required
+                    //type="text"
+                     />
+                <CreateTripInput 
+                    type="number"
+                    placehoder="Idade"
+                    //required
+                    //pattern={"a-z"}
+                    //title={"O viajante deve ser maior de 18"}
+                    />
+                <CreateTripInput 
+                    type="text" 
+                    placehoder="Texto de Candidatura"/>
+                <CreateTripInput 
+                    type="text" 
+                    placeholder="Profissão"/>
+                <CreateTripInput 
+                    type="text" 
+                    placeholder="Escolha um país"/>
+
             </div>
             <div>
                 <button onClick={goBack}> VOLTAR </button>

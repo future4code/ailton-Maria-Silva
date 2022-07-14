@@ -1,22 +1,7 @@
 import React, { useEffect} from 'react';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-const Container = styled.div`
-    //border: 2px solid whitesmoke;
-    //background-color: black;
-    color: white;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 8%;
-    margin-bottom: 8%;
-    width: 64vw;
-    height: 84vh;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-`
+import { Container } from './Style';
 
 function TripDetails () {
 

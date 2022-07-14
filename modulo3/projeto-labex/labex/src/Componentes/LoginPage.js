@@ -1,46 +1,32 @@
 import React, {useState} from 'react';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
-const Container = styled.div`
-    //border: 2px solid whitesmoke;
-    //background-color: black;
-    color: white;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 8%;
-    margin-bottom: 8%;
-    width: 64vw;
-    height: 84vh;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-`
+import { Container } from './Style';
+import { CreateTripInput } from './Style';
 
 function LoginPage () {
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [form, setForm] = useState({email:"", password:""})
 
     const getEmail = (e) => {
-        setEmail(e.target.value);
+        setForm({email: e.target.value});
     };
     const getPassword = (e) => {
-        setPassword(e.target.value)
+        setForm({password: e.target.value})
     };
 
     const goBack = () =>{
         navigate('/')
     };
 
-    const getInAdm = () => {
-        const body = {
-            email: email,
-            password: password,
-        }
-        axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline-ailton/login', body)
+    const getInAdm = (e) => {
+        e.preventDefault()
+        //const body = {
+        //    email: email,
+        //    password: password,
+        //}
+        //axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline-ailton/login', body)
             .then((response) => {
                 console.log(response.data.token);
                 localStorage.setItem('token', response.data.token);
@@ -55,32 +41,34 @@ function LoginPage () {
             <div>
                 <h2>Login</h2>
             </div>
+            <form onSubmit={getInAdm}>
             <div>
-                <p>
-                    <input type="email" placeholder="E-mail" onChange={getEmail}/>
-                </p>
-                <p>
-                    <input type="password" placeholder="Senha" onChange={getPassword}/>
-                </p>
+                <CreateTripInput 
+                    value={form.email} 
+                    placeholder="E-mail" 
+                    onChange={getEmail}
+                    required
+                    type="email"
+                    />
+                <CreateTripInput 
+                    value={form.password}
+                    type="password" 
+                    placeholder="Senha" 
+                    onChange={getPassword}
+                    required
+                    pattern={"^.{8,}"}
+                    title={"Sua senha deve ter no mínimo 8 caracteres"}/>
             </div>
+            <div>
+                <button>ENTRAR</button>
+            </div>
+            </form>
             <div>
                 <button onClick={goBack}>VOLTAR</button>
-                <button onClick={getInAdm}>ENTRAR</button>
             </div>
+
         </Container>
     )
 };
 
 export default LoginPage;
-
-
-
-/*  
-
-const getInAdm = () =>{
-        navigate("/admin-home-page")
-    };
-
-
-
- */

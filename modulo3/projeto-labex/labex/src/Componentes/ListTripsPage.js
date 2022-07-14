@@ -1,38 +1,9 @@
 import React,{useState, useEffect} from 'react';
-import styled from 'styled-components';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
-
-const Container = styled.div`
-    //border: 2px solid whitesmoke;
-    //background-color: black;
-    color: white;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 8%;
-    margin-bottom: 8%;
-    width: 64vw;
-    height: 84vh;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-`
-
-const ContainerBotao = styled.div`
-    display: flex;
-    justify-content: space-evenly;
-    >button{
-        padding: 12px;
-        background-color:black;
-        color: yellowgreen;
-        text-shadow: fuchsia;
-        border: 2px solid fuchsia;
-        font-weight: bold;
-        //border-top-left-radius: 30px;
-        //border-bottom-right-radius: 30px;
-        text-shadow: blueviolet;
-    }
-`
+import { Container } from './Style';
+import { ContainerBotao } from './Style';
+import { ContainerTrips } from './Style';
 
 function ListTrips () {
     const navigate = useNavigate();
@@ -48,10 +19,10 @@ function ListTrips () {
     const [getTripsList, setGetTripsList] = useState([]);
 
     useEffect(()=>{
-        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline-ailton/trips`)
+        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trips`)
         .then((response)=>{
-            setGetTripsList(response.data)
-            console.log(response.data.results)
+            setGetTripsList(response.data.trips)
+            console.log(response.data.trips)
         }).catch((error)=>{
             console.log(error)
         })
@@ -61,15 +32,25 @@ function ListTrips () {
         
         <Container>
             <div>
-                <h2>Ver as Viagens disponiveis</h2>
+                <h2>VIAGENS DISPONÍVEIS</h2>
+            </div>
+            <div>
+                {getTripsList.map((trips)=>{
+                    return (
+                        <ContainerTrips key={trips.id}>
+                            <h4>{trips.name}</h4>
+                            <p>{trips.description}</p>
+                            <p>{trips.planet}</p>
+                            <p>{trips.duration}</p>
+                            <p>{trips.date}</p>
+                            <button onClick={goToApplySelf}>INSCREVER-SE</button>
+                        </ContainerTrips>
+                    )
+                })}
             </div>
             <ContainerBotao>
                 <button onClick={goBack}>VOLTAR</button>
-                <button onClick={goToApplySelf}>INSCREVER-SE</button>
             </ContainerBotao>
-            <div>
-
-            </div>
         </Container>
     )
 };
