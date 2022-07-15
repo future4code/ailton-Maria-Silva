@@ -85,9 +85,9 @@ function CreateTrip () {
                     placeholder="Duração em dias"
                     onchange={getInputInfo}  />
                 </div>
-                <ContainerBota>
+                <ContainerBotao>
                     <button type={"submit"}>Criar</button>
-                </ContainerBota>
+                </ContainerBotao>
             </form>
             <ContainerBotao>
                 <button onClick={goBack}>Voltar</button>
