@@ -6,6 +6,7 @@ import {useState} from 'react';
 import { Container } from './Style';
 import { CreateTripInput } from './Style';
 import { SelectTrip } from './Style';
+import {ContainerBotao} from './Style';
 
 function ApplicationForm () {
     const navigate = useNavigate();
@@ -15,76 +16,121 @@ function ApplicationForm () {
     };
 
     const [tripsList, setTripsList] = useState ([]);
-    const [tripName, setTripName] = useState("");
-    
-    const changeTripName = (e) => {
-        setTripName(e.target.value)
-    }
+    const [form, setForm] = useState({
+        name:"",
+        age: 0,
+        applicationText:"",
+        profession:"",
+        country: "",
+        trip: null
+    });
 
+    const getInputInfo = (e) => {
+        const value = e.target.value;
+        const inptName = e.target.name;
+        setForm ({...form, [inptName]: value})
+    };
     useEffect (()=>{
         axios.get('https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trips')
             .then((response)=>{
-                setTripsList(response.data?.trips)
+                setTripsList(response.data.trips)
                 console.log(response.data.trips)
             }).catch((error)=>{
                 console.log(error)
             })
     },[]);
 
-    const sendIn = () => {
-        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trips/:id/apply`)
-        .then((response) =>{
-            console.log(response);
-            alert("Aplicação para viagem recebida com sucesso!");
-        }).catch((error)=>{
-            console.log(error);
-        })
-    };
-    
+    const submitApplication = (e) =>{
+        e.defaultPrevented()
+        const body ={
+            name: form.name,
+            age: form.age,
+            applicationText:form.applicationText,
+            profession: form.profession,
+            country: form.country
+        }
+        axios.post(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trips/${form.trip.id}/apply`, body)
+    }
+
     return(
         <Container>
             <div>
                 <h2>INSCREVA-SE PARA UMA VIAGEM</h2>
             </div>
-            <div>
-                <SelectTrip onChange={changeTripName}>
-                    <option value={""}> Escolha uma Viagem </option> 
-                    {tripsList.map((trips)=>{
-                        return (
-                    <option key={trips.id} value={trips.name}>
-                        {trips.name}
-                    </option>
-                            )
-                        })} 
-                    </SelectTrip>
-                <CreateTripInput 
-                    type="text" 
-                    placeholder="Nome Completo"
-                    //required
-                    //type="text"
-                     />
-                <CreateTripInput 
-                    type="number"
-                    placehoder="Idade"
-                    //required
-                    //pattern={"a-z"}
-                    //title={"O viajante deve ser maior de 18"}
-                    />
-                <CreateTripInput 
-                    type="text" 
-                    placehoder="Texto de Candidatura"/>
-                <CreateTripInput 
-                    type="text" 
-                    placeholder="Profissão"/>
-                <CreateTripInput 
-                    type="text" 
-                    placeholder="Escolha um país"/>
-
-            </div>
-            <div>
+            <form onSubmit={submitApplication}>
+                <div>
+                    <SelectTrip 
+                        name={"trip"}
+                        value={form["trip"]}
+                        type="option"
+                        placeholder="Escolha uma viagem">
+                        <option value={""}> Escolha uma Viagem </option> 
+                        {tripsList.map((trips)=>{
+                            return (
+                        <option key={trips.id} value={trips.name}>
+                            {trips.name}
+                        </option>
+                                )
+                            })} 
+                        </SelectTrip>
+                    <CreateTripInput 
+                        name={"name"}
+                        value={form['name']}
+                        type="text" 
+                        placeholder="Nome Completo"
+                        onChange={getInputInfo}
+                        //required
+                        //type="text"
+                        />
+                    <CreateTripInput 
+                        name={"age"}
+                        value={form['age']}
+                        type="number"
+                        placehoder="Idade"
+                        onChange={getInputInfo}
+                        //required
+                        //pattern={"a-z"}
+                        //title={"O viajante deve ser maior de 18"}
+                        />
+                    <CreateTripInput 
+                        name={"application"}
+                        value={form['application']}
+                        type="text" 
+                        placehoder="Texto de Candidatura"
+                        onChange={getInputInfo}/>
+                    <CreateTripInput 
+                        name={"profession"}
+                        value={form['profession']}
+                        type="text" 
+                        placeholder="Profissão"
+                        onChange={getInputInfo}/>
+                    <SelectTrip 
+                        name={"country"}
+                        value={form['country']}
+                        type="text" 
+                        placeholder="Escolha um país"
+                        onChange={getInputInfo}> 
+                        <option>Escolha um País</option>
+                        <option> Argentina </option>
+                        <option> Bolivia </option>
+                        <option> Brasil</option>
+                        <option> Chile </option>
+                        <option> Colombia </option>
+                        <option> Costa Rica </option>
+                        <option> Cuba </option>
+                        <option> Equador </option>
+                        <option> Paraguai </option>
+                        <option> Peru </option>
+                        <option> Uruguai </option>
+                        </SelectTrip>
+                        <ContainerBotao>
+                            <button type={"submit"}> ENVIAR </button>
+                        </ContainerBotao>
+                </div>
+            </form>
+            <ContainerBotao>
                 <button onClick={goBack}> VOLTAR </button>
-                <button onClick={sendIn}> ENVIAR </button> 
-            </div>
+            </ContainerBotao>
         </Container>
     )
 };

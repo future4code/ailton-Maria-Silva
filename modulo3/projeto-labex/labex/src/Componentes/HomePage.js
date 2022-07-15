@@ -15,7 +15,8 @@ function HomePage () {
     };
     
     return (
-        <Container>            
+        <Container>
+            <img src="https://www.pinclipart.com/picdir/big/88-882904_mermaiden-crystal-dress-up-game-white-x-icon.png" />           
             <ContainerBotao>
                 <button onClick={goToTrips}> VIAGENS </button>
                 <button onClick={goToLogin}>ADMINISTRADOR</button>

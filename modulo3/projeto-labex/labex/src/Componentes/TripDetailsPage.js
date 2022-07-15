@@ -2,6 +2,7 @@ import React, { useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container } from './Style';
+import {ContainerBotao} from './Style';
 
 function TripDetails () {
 
@@ -9,8 +10,6 @@ function TripDetails () {
     const goBack = () =>{
         navigate(-1)
     };
-
-
     useEffect(()=>{
         const token = localStorage.getItem('token');
 
@@ -18,9 +17,7 @@ function TripDetails () {
             console.log("Não está logado")
             navigate('/login')
         }
-
     },[])
-
     useEffect(() => {
         const toke = localStorage.getItem('token')
         axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trip/NoIFVcOiSgTKTIPVZwXS`, {
@@ -37,10 +34,10 @@ function TripDetails () {
 
     return(
         <Container>
-            <div>
+            <ContainerBotao>
                 <button onClick={goBack}>Voltar</button>
                 <button>Inscrever-se</button>
-            </div>
+            </ContainerBotao>
             <div>
                 <h1> Olá, eu sou a página List Trips</h1>
             </div>

@@ -38,12 +38,14 @@ function ListTrips () {
                 {getTripsList.map((trips)=>{
                     return (
                         <ContainerTrips key={trips.id}>
-                            <h4>{trips.name}</h4>
-                            <p>{trips.description}</p>
-                            <p>{trips.planet}</p>
-                            <p>{trips.duration}</p>
-                            <p>{trips.date}</p>
-                            <button onClick={goToApplySelf}>INSCREVER-SE</button>
+                            <h3>Viagem para: {trips.name}</h3>
+                            <p>Descrição: {trips.description}</p>
+                            <p>Planeta: {trips.planet}</p>
+                            <p>Duração: {trips.duration}</p>
+                            <p>Data de partida:{trips.date}</p>
+                            <ContainerBotao>
+                                <button onClick={goToApplySelf}>INSCREVER-SE</button>
+                            </ContainerBotao>
                         </ContainerTrips>
                     )
                 })}

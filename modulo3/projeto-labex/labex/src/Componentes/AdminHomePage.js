@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container } from './Style';
 import { ContainerTrips} from './Style';
+import {ContainerBotao} from './Style';
 
 function AdmHome () {
     const navigate = useNavigate();
@@ -13,18 +14,16 @@ function AdmHome () {
     const goBack = () =>{
         navigate(-1)
     }
-
     const logOut = () =>{
         alert ("Você se desconectou!")
     }
-
     useEffect(() => {
         if(localStorage.getItem('token') === null){
             navigate('/login')
         }
     },[])
-
     const [getTripsList, setGetTripsList] = useState([]);
+    const [availableCanditates, setAvailableCanditates] = useState ([]);
 
     useEffect(()=>{
         axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trips`)
@@ -36,7 +35,26 @@ function AdmHome () {
         })
     },[]);
 
-   /* deleteTrip = () => {
+    const mappingTrips = () =>{
+        getTripsList.map((trips)=>{
+            return (
+                trips.id
+            )
+        })}
+    
+    
+    
+    useEffect(()=>{
+        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trip/${mappingTrips}`).
+        then((response)=>{
+            console.log(response);
+        }).catch((error)=>{
+            console.log(error)
+        })
+    },[])
+
+    /*
+    deleteTrip = () => {
         axios.del(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trips/:id`)
         .then((response)=>{
             console.log(response)
@@ -48,25 +66,34 @@ function AdmHome () {
     return (
         <Container>
             <div>
-                <h2> Painel Administrativo </h2>
+                <h2> PAINEL ADMINISTRATIVO </h2>
             </div>
-            <div>
+            <ContainerBotao>
                 <button onClick={goBack}>VOLTAR</button>
                 <button onClick={createTrip}>CRIAR VIAGEM</button>
                 <button onClick={logOut}>LOUGOUT</button>
-            </div>
+            </ContainerBotao>
             <div>
                 {getTripsList.map((trips)=>{
                     return (
                         <ContainerTrips key={trips.id}>
                             <h4>{trips.name}</h4>
-                            <button>APAGAR</button>
+                            <p>{trips.description}</p>
+                            <ContainerBotao>
+                                <button>APAGAR</button>
+                            </ContainerBotao>
+                            <h5>CANDIDATOS PARA APROVAR</h5>
+                            <div>
+
+                            </div>
+                            <p>"Fulane"</p>
+                            <ContainerBotao>
+                                <button>ACEITAR</button>
+                                <button>REJEITAR</button>
+                            </ContainerBotao>
                         </ContainerTrips>
                     )
                 })}
-            </div>
-            <div>
-                <h3>Candidatos Para Aprovar</h3>
             </div>
         </Container>
 

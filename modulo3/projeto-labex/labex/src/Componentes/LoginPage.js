@@ -3,30 +3,32 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Container } from './Style';
 import { CreateTripInput } from './Style';
+import {ContainerBotao} from './Style'
 
 function LoginPage () {
     const navigate = useNavigate();
 
     const [form, setForm] = useState({email:"", password:""})
 
-    const getEmail = (e) => {
-        setForm({email: e.target.value});
-    };
-    const getPassword = (e) => {
-        setForm({password: e.target.value})
+    const onChangeEmailPassowrd = (e) =>{
+        const {name, value} = e.target;
+        setForm({...form, [name]:value})
     };
 
     const goBack = () =>{
         navigate('/')
     };
+    const goAdmin = () =>{
+        navigate('/admin-home-page')
+    }
 
     const getInAdm = (e) => {
         e.preventDefault()
-        //const body = {
-        //    email: email,
-        //    password: password,
-        //}
-        //axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline-ailton/login', body)
+        const body = {
+           email: form.email,
+           password: form.password
+        }
+        axios.post('https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/login', body)
             .then((response) => {
                 console.log(response.data.token);
                 localStorage.setItem('token', response.data.token);
@@ -44,31 +46,46 @@ function LoginPage () {
             <form onSubmit={getInAdm}>
             <div>
                 <CreateTripInput 
-                    value={form.email} 
+                    name="email"
+                    value={form["email"]} 
                     placeholder="E-mail" 
-                    onChange={getEmail}
+                    onChange={onChangeEmailPassowrd}
                     required
                     type="email"
                     />
                 <CreateTripInput 
-                    value={form.password}
+                    name="password"
+                    value={form["password"]}
                     type="password" 
                     placeholder="Senha" 
-                    onChange={getPassword}
+                    onChange={onChangeEmailPassowrd}
                     required
                     pattern={"^.{8,}"}
                     title={"Sua senha deve ter no mínimo 8 caracteres"}/>
             </div>
-            <div>
-                <button>ENTRAR</button>
-            </div>
+            <ContainerBotao>
+                <button onClick={goAdmin} type={"submit"}>ENTRAR</button>
+            </ContainerBotao>
             </form>
-            <div>
+            <ContainerBotao>
                 <button onClick={goBack}>VOLTAR</button>
-            </div>
+            </ContainerBotao>
 
         </Container>
     )
 };
 
 export default LoginPage;
+
+
+/*
+
+
+    const getEmail = (e) => {
+        setForm({...form, email: e.target.value});
+    };
+    const getPassword = (e) => {
+        setForm({...form, password: e.target.value})
+    }; 
+    
+*/
