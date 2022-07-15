@@ -10,6 +10,8 @@ function TripDetails () {
     const goBack = () =>{
         navigate(-1)
     };
+
+    /*
     useEffect(()=>{
         const token = localStorage.getItem('token');
 
@@ -17,14 +19,14 @@ function TripDetails () {
             console.log("Não está logado")
             navigate('/login')
         }
-    },[])
+    },[]) */
     useEffect(() => {
         const toke = localStorage.getItem('token')
         axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trip/NoIFVcOiSgTKTIPVZwXS`, {
             header: {
                 auth: toke
             }
-        }) // path.id
+        })
             .then((response) => {
                 console.log(response.data)
             }).catch((error) => {

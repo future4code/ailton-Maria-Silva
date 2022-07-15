@@ -17,13 +17,9 @@ function AdmHome () {
     const logOut = () =>{
         alert ("Você se desconectou!")
     }
-    useEffect(() => {
-        if(localStorage.getItem('token') === null){
-            navigate('/login')
-        }
-    },[])
+
+
     const [getTripsList, setGetTripsList] = useState([]);
-    const [availableCanditates, setAvailableCanditates] = useState ([]);
 
     useEffect(()=>{
         axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trips`)
@@ -35,17 +31,16 @@ function AdmHome () {
         })
     },[]);
 
-    const mappingTrips = () =>{
-        getTripsList.map((trips)=>{
-            return (
-                trips.id
-            )
-        })}
-    
-    
+     /*
+
+         useEffect(() => {
+        if(localStorage.getItem('token') === null){
+            navigate('/login')
+        }
+    },[])
     
     useEffect(()=>{
-        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trip/${mappingTrips}`).
+        axios.get(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trip/${getTripsList.id}`).
         then((response)=>{
             console.log(response);
         }).catch((error)=>{
@@ -53,7 +48,7 @@ function AdmHome () {
         })
     },[])
 
-    /*
+   
     deleteTrip = () => {
         axios.del(`https://us-central1-labenu-apis.cloudfunctions.net/labeX/maria-caroline/trips/:id`)
         .then((response)=>{

@@ -16,7 +16,7 @@ function HomePage () {
     
     return (
         <Container>
-            <img src="https://www.pinclipart.com/picdir/big/88-882904_mermaiden-crystal-dress-up-game-white-x-icon.png" />           
+            <img src="https://www.pinclipart.com/picdir/big/88-882904_mermaiden-crystal-dress-up-game-white-x-icon.png" alt="Logo de um X tomando a tela" />           
             <ContainerBotao>
                 <button onClick={goToTrips}> VIAGENS </button>
                 <button onClick={goToLogin}>ADMINISTRADOR</button>

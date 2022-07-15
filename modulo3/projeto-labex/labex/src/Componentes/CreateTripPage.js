@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { useNavigate} from 'react-router-dom';
 import { Container } from './Style';
 import { CreateTripInput } from './Style';
@@ -40,12 +40,6 @@ function CreateTrip () {
             console.log(error)
         })
     }
-
-    useEffect(() => {
-        if(localStorage.getItem('token') === null){
-            navigate('/login')
-        }
-    },[])
 
      return(
         <Container>
