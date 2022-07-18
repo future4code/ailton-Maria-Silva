@@ -29,15 +29,14 @@ function App() {
         console.log(error);
       });
     };
-    pegarPokemonNaAPI()
-  }, [])
+  }, []);
 
 
 
 
-  changePokeName = (e) => {
-    setPokeName({pokeName: e.target.value})
-  }
+  changePokeName = (event) => {
+    setPokeName(event.target.value);
+  };
 
   return (
     <Container>
@@ -46,15 +45,14 @@ function App() {
       </header>
       <select onChange={changePokeName}>
         <option value={""}> Nenhum </option>
-        {pokelist.map(pokemon =>{
-          return(
-            <option key={pokemon.name} value={pokemon.name}>
-              {pokemon.name}
-            </option>
+        {pokeLis.map((pokemon)=>{
+          return (
+            <option key={pokemon.name} value={pokemon.name}> 
+              {pokemon.name} </option>
           );
         })}
       </select>
-      <PokeCard />
+      {pokeName && <PokeCard pokemn={pokeName}/>}
     </Container>
   );
 };
