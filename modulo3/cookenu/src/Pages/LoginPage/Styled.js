@@ -6,27 +6,43 @@ export const ScreenContainer = styled.div`
     align-items: center;
     width: 100vw;
 `
-export const InputsContainer = styled.div`
+export const PrettyInput = styled.input`
+    width: 40vw;
+    height: 4vh;
+    border: 1px solid gray;
+    margin-bottom: 4px;
+`
+export const PrettyButton = styled.button`
+    background-color: red;
+    color: white;
+    font-size: medium;
+    padding: 10px;
+    border: none;
+    :hover{
+        cursor: pointer;
+        background-color: white;
+        color: red;
+        border: 2px solid red;
+    }
+`
+export const PrettyForm = styled.form`
     display: flex;
     flex-direction: column;
-    width: 80vw;
-    max-width: 450px;
+    justify-items: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 `
-export const LoginContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 80vw;
+export const SignUpButton = styled.button`
+    border: none;
+    background-color: white;
+    color: red;
+    font-size: medium;
+    :hover{
+        cursor: pointer;
+        text-decoration: underline red;
+    }
+`
+export const LogoImg = styled.img`
     max-width: 450px;
-    align-items: center;
-    margin-bottom: 20px;
-`
-export const ButtonContainer = styled.div`
-    width: 80vw;
-    max-width: 450px;
-`
-export const LogoImage = styled.img`
-    width: 70vw;
-    max-width: 350px;
+    max-height: 450px;
 `

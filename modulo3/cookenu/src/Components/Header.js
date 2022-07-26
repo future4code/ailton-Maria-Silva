@@ -3,30 +3,29 @@ import { MainContainer, PrettyButton } from './Styled';
 import {useNavigate} from "react-router-dom"
 
 
-const Header = () =>{
+const Header = ({logButton, setLogButton}) =>{
+    const token = localStorage.getItem("token")
     const navigate = useNavigate();
-    const goToLogin = () =>{
-        navigate("/login")
-    };
     const goRecipesList = () =>{
         navigate("/")
     };
-
-
+    const logout = () =>{
+        localStorage.removeItem("token")
+    };
+    const logAction = () =>{
+        if(token){
+        logout()
+        setLogButton("LOGIN")
+        navigate("/login")
+        } else {
+            navigate("/login")
+        }
+    };
     return (
-        <div>
-            <MainContainer>
-                <div>
-                    <PrettyButton onClick={() => goRecipesList()}>HOME</PrettyButton> 
-                </div>
-                <div>
-                    <PrettyButton onClick={() => goToLogin()}>LOGIN</PrettyButton>
-                </div>
-            </MainContainer>
-
-        </div>
-
-
+        <MainContainer>
+            <PrettyButton onClick={() => goRecipesList()}>HOME</PrettyButton> 
+            <PrettyButton onClick={logAction}>{logButton}</PrettyButton>
+        </MainContainer>
     );
 };
 export default Header;

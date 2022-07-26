@@ -1,10 +1,16 @@
 import React from "react";
+import { ScreenContainer, LogoImg } from "./Styled";
+import logoPanela from "../../Assets/logoPanela.png";
+import SignUpForm from "./SignUpForm"
+//import useUnprotectedPage from "../../Hooks/useUnprotectedPage";
 
-const SignUp = () =>{
+const SignUp = ({setLogButton}) =>{
+    //useUnprotectedPage()
     return(
-        <div>
-            <h2>Sign Up</h2>
-        </div>
+        <ScreenContainer>
+            <LogoImg src={logoPanela} alt="desenho de uma panela"/>
+            <SignUpForm setLogButton={setLogButton}/>
+        </ScreenContainer>
     );
 };
 
