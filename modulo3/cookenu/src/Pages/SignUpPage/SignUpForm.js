@@ -40,7 +40,7 @@ const SignUpForm = ({setLogButton}) =>{
             type={"password"}
             />
             <PrettyButton type={"submit"}>
-                {LoadingImg ? <img src="https://www.avenidacenter.com.br/img/loading.gif"/> : <>Cadastrar</>}
+                {isLoading ? <LoadingImg src="https://www.avenidacenter.com.br/img/loading.gif"/> : <>Cadastrar</>}
             </PrettyButton>
 
         </PrettyForm>

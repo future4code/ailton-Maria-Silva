@@ -32,7 +32,7 @@ const LoginForm = ({setLogButton}) =>{
                 type={"password"} />
                 <PrettyButton
                 type={"submit"}>
-                    {LoadingImg ? <img src="https://www.avenidacenter.com.br/img/loading.gif"/> : <>Enviar</>}
+                    {isLoading ? <LoadingImg src="https://www.avenidacenter.com.br/img/loading.gif"/> : <>Enviar</>}
                 </PrettyButton>
             </PrettyForm>
     );

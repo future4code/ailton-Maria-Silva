@@ -8,12 +8,10 @@ export const createRecipe = (body, clear, setIsLoading) =>{
             Authorization: localStorage.getItem("token")
         }
     }).then((res)=>{
-        console.log(res.data.message)
         alert(res.data.message)
         clear()
         setIsLoading(false)
     }).catch((err)=>{
-        console.log(err.response.data.message)
         alert(err.response.data.message)
     })
 };

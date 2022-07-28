@@ -26,7 +26,6 @@ const RecipeList = () =>{
             />
         )
     })
-    console.log(recipes)
     return(
         <BigContainer>
             <RecipeListContainer>

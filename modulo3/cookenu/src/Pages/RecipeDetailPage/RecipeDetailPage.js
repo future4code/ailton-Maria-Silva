@@ -9,7 +9,6 @@ const RecipeDetail = () =>{
     useProtectedPage()
     const params = useParams()
     const recipe = useRequestData({}, `${BASE_URL}/recipe/${params.id}`) [0];
-    console.log(recipe)
     return(
         <ScreenContainer>
             {recipe ?
