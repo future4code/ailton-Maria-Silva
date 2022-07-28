@@ -45,3 +45,7 @@ export const PrettyButton = styled.button`
         border: 2px solid red;
     }
 `
+export const LoadingImg = styled.img`
+    width: 20px;
+    height: 20px
+`

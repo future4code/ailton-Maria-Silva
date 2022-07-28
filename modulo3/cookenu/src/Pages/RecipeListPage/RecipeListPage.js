@@ -3,7 +3,7 @@ import useProtectedPage from "../../Hooks/useProtectedPage";
 import useRequestData from "../../Hooks/useRequestData";
 import {BASE_URL} from "../../Constants/urls";
 import RecipeCard from "../../Components/RecipeCard/RecipeCard";
-import { BigContainer, RecipeListContainer, AddRecipeButton } from "./Styled";
+import { BigContainer, RecipeListContainer, AddRecipeButton, LoadingImg } from "./Styled";
 import { useNavigate } from "react-router-dom";
 
 const RecipeList = () =>{
@@ -30,7 +30,7 @@ const RecipeList = () =>{
     return(
         <BigContainer>
             <RecipeListContainer>
-                {recipesCard}
+                {recipesCard.length > 0 ? recipesCard : <LoadingImg src="https://www.avenidacenter.com.br/img/loading.gif"/>}
             </RecipeListContainer>
             <AddRecipeButton onClick={goToAddRecipte}>ADICIONAR RECEITA</AddRecipeButton>
         </BigContainer>

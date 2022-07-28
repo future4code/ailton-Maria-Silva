@@ -46,3 +46,7 @@ export const LogoImg = styled.img`
     max-width: 450px;
     max-height: 450px;
 `
+export const LoadingImg = styled.img`
+    width: 20px;
+    height: 20px
+`

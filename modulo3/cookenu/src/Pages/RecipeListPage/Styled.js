@@ -29,3 +29,7 @@ export const AddRecipeButton = styled.button`
         color: white;
     }
 `
+export const LoadingImg = styled.img`
+    width: 20px;
+    height: 20px
+`

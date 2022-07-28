@@ -12,12 +12,13 @@ const RecipeDetail = () =>{
     console.log(recipe)
     return(
         <ScreenContainer>
-            {recipe &&
+            {recipe ?
                 <RecipeContainer>
                     <RecipeImage src={recipe.image}/>
                     <h1>{recipe && recipe.title.toUpperCase()}</h1>
                     <p>{recipe.description}</p>
                 </RecipeContainer>
+                : <img src="https://www.avenidacenter.com.br/img/loading.gif"/>
             }
         </ScreenContainer>
     );

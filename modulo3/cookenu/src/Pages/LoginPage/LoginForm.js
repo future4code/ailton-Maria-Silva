@@ -1,5 +1,5 @@
-import React from "react";
-import {PrettyInput, PrettyButton, PrettyForm} from "./Styled";
+import React, { useState }from "react";
+import {PrettyInput, PrettyButton, PrettyForm, LoadingImg} from "./Styled";
 import useForm from "../../Hooks/useForm";
 import {login} from "../../Services/user";
 import {useNavigate} from "react-router-dom";
@@ -7,10 +7,10 @@ import {useNavigate} from "react-router-dom";
 const LoginForm = ({setLogButton}) =>{
     const navigate = useNavigate();
     const [form, onChange, clear] = useForm({email: "", password: ""})
-    console.log(form)
+    const [isLoading, setIsLoading] = useState(false);
     const onSubmitForm = (e) =>{
         e.preventDefault()
-        login(form, clear, navigate, setLogButton)
+        login(form, clear, navigate, setLogButton, setIsLoading)
         navigate("/")
     };
     return(
@@ -32,7 +32,7 @@ const LoginForm = ({setLogButton}) =>{
                 type={"password"} />
                 <PrettyButton
                 type={"submit"}>
-                    Enviar
+                    {LoadingImg ? <img src="https://www.avenidacenter.com.br/img/loading.gif"/> : <>Enviar</>}
                 </PrettyButton>
             </PrettyForm>
     );

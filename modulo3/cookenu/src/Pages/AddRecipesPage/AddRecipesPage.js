@@ -1,26 +1,22 @@
-import React from "react";
-import useProtectedPage from "../../Hooks/useProtectedPage";
+import React, { useState } from "react";
+//import useProtectedPage from "../../Hooks/useProtectedPage";
 import useForm from "../../Hooks/useForm";
-import { BigContainer, PrettyInput, PrettyForm, PrettyButton } from "./Styled"
-import { createRecipe } from "../../Services/recipe"
+import { BigContainer, PrettyInput, PrettyForm, PrettyButton, LoadingImg } from "./Styled"
+import { createRecipe } from "../../Services/recipe";
 
 const AddRecipes = () =>{
-    useProtectedPage()
-    const [form, onChange, clear] = useForm({
-        title: "",
-        description: "",
-        image: "",
-    })
-   
+    //useProtectedPage()
+    const [form, onChange, clear] = useForm({title: "", description: "", image: ""})
+    const [isLoading, setIsLoading] = useState(false)
     const onSubmitForm = (e) =>{
         e.preventDefault()
-        createRecipe(form, clear)
+        createRecipe(form, clear, setIsLoading)
     }
     return(
-        <BigContainer onSubmit={onSubmitForm}>
+        <BigContainer>
             <h2>ADICIONAR NOVA RECEITA</h2>
             <div>
-                <PrettyForm on>
+                <PrettyForm onSubmit={onSubmitForm}>
                 <PrettyInput
                 name={"title"}
                 value={form.title}
@@ -42,7 +38,9 @@ const AddRecipes = () =>{
                 placeholder="Link da Imagem"
                 />
                 <div>
-                    <PrettyButton>ADICIONAR</PrettyButton>
+                    <PrettyButton type={"submit"}>
+                    {isLoading ? <LoadingImg src="https://www.avenidacenter.com.br/img/loading.gif"/> : <>ADICIONAR</>}
+                    </PrettyButton>
                 </div>
                 </PrettyForm>
             </div>
