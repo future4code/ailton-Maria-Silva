@@ -13,9 +13,9 @@ const clientes : cliente = [
 	{ cliente: "Soter", saldoTotal: 1200, debitos: [] }
 ]
 
-const totalDebitos : number = clientes.debitos.reduce();
+const totalDebitos : Array<number> = clientes.debitos.reduce();
 
-const novoSaldo = clientes.saldotTotal - totalDebitos;
+const novoSaldo : number = clientes.saldoTotal - totalDebitos;
 
 
 
