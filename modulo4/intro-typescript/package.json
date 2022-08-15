@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "typescript": "^4.7.4"
+  },
+  "name": "intro-typescript",
+  "version": "1.0.0",
+  "description": "ex-intro-typescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc index.ts && node ./build/index.js"
+  },
+  "keywords": [
+    "intro"
+  ],
+  "author": "Maria Caroline",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.7.1"
+  }
+}
