@@ -5,69 +5,69 @@
 //Popule manualmente o array com pelo menos 3 produtos.
 
 export type Products = {
-    id: string,
+    id: number,
     name: string,
     price: number
 }
 
 export const productsList: Products[] = [
     {
-        id: "T - 1",
+        id: 1,
         name: "Top de Alça",
         price: 89
     },
     {
-        id: "T - 2",
+        id: 2,
         name: "Top Tomara Que Caia",
         price: 59
     },
     {
-        id: "T - 3",
+        id: 3,
         name: "Top Frente Unica",
         price: 69
     },
     {
-        id: "T - 4",
+        id: 4,
         name: "Top 10 em 1",
         price: 109
     },
     {
-        id: "T - 5",
+        id: 5,
         name: "Top WorkOut",
         price: 189
     },
     {
-        id: "C - 1",
+        id: 6,
         name: "Calcinha Asa Delta",
         price: 89
     },
     {
-        id: "C - 2",
+        id: 7,
         name: "Cancilnha Cintura Alta",
         price: 109
     },
     {
-        id: "C - 3",
+        id: 8,
         name: "Boy Short",
         price: 129
     },
     {
-        id: "C - 4",
+        id: 9,
         name: "Sunquini",
         price: 89
     },
     {
-        id: "C - 5",
+        id: 10,
         name: "Calcinha Triangulo",
         price: 59
     },
     {
-        id: "M - 1",
+        id: 11,
         name: "Maiô Básico",
         price: 289
     },
     {
-        id: "M - 2",
+        id: 12,
         name: "Maiô anos 80",
         price: 89
     },
