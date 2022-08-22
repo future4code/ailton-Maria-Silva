@@ -1,0 +1,257 @@
+`
+-- Ex 1
+USE `ailton-maria-silva`;
+
+CREATE TABLE Actors (
+    id VARCHAR(255) PRIMARY KEY,
+    name VARCHAR (255) NOT NULL,
+    salary FLOAT NOT NULL,
+    birth_date DATE NOT NULL,
+    gender VARCHAR(6) NOT NULL
+);
+
+-- a) VARCHAR - define o tipo ID como caracteres variaveis, recebendo no máximo 255 caracteres,
+-- e PRIMARY KEY, significa que esse número não pode ser repetido.
+-- DATE define o tipo da informação birth_date como data (ano - mes - dia),
+-- NOT NULL significa que esse campo obrigatóriamente precisa ser preenchido, pois a tabela não aceita vazio
+
+-- b)
+SHOW DATABASES;
+-- mostra o nome da minha schema e information_schema
+SHOW TABLES;
+-- error code 1046
+-- c) Mostra os nomes dos campos, e tipos de cada coluna, se está vazio,
+-- ou preenchido, a chave, o default (que é nulo) e extra.
+DESCRIBE Actors;
+
+-- Ex 2 
+INSERT INTO Actors (id, name, salary, birth_date, gender)
+VALUES(
+  "001", 
+  "Tony Ramos",
+  400000,
+  "1948-08-25", 
+  "male"
+);
+-- a)
+INSERT INTO Actors (id, name, salary, birth_date, gender)
+VALUES(
+"002",
+"Glória Pires",
+120000,
+"1963-08-23",
+"female"
+);
+
+-- b) ErrorCode: 1026
+INSERT INTO Actors (id, name, salary, birth_date, gender)
+VALUES(
+"002",
+"Caio Castro",
+0,
+"1990-10-15",
+"male"
+);
+-- ErrorCode: 1026. Entrada duplicada para uma chave primária;
+-- Os valores da propriedade Id são unicos, porque recebem o tipo chave primária.
+
+-- c) ErrorCode: 1136
+INSERT INTO Actors (id, name, salary)
+VALUES(
+  "003", 
+  "Fernanda Montenegro",
+  300000,
+  "1929-10-19", 
+  "female"
+);
+-- ErrorCode: 1136. Column count doesn't match value count at row 1
+-- colunas não batem com o valor passado // esqueceu a data e o genero
+
+-- d) ErrorCode: 1346 
+INSERT INTO Actors (id, salary, birth_date, gender)
+VALUES(
+  "004",
+  400000,
+  "1949-04-18", 
+  "male"
+);
+-- ErrorCode: 1346. Field 'name' doesn't have a default value
+-- campos name não tem um valor, que nesse caso é obrigatório.
+
+-- e) ErrorCode: 1292
+INSERT INTO Actors (id, name, salary, birth_date, gender)
+VALUES(
+  "005", 
+  "Juliana Paes",
+  719333.33,
+  1979-03-26, 
+  "female"
+);
+-- ErrorCode: 1292. Incorrect date value '1950' for column 'birth_date' at row 1
+-- valor data incorreto, subtraiu o mes e o dia do ano.
+
+-- f) 
+INSERT INTO Actors (id, name, salary, birth_date, gender)
+VALUES(
+  "003", 
+  "Fernanda Montenegro",
+  300000,
+  "1929-10-19", 
+  "female"
+);
+
+INSERT INTO Actors (id, name, salary, birth_date, gender)
+VALUES(
+  "004", 
+  "Antônio Fagundes",
+  400000,
+  "1949-04-18", 
+  "male"
+);
+
+INSERT INTO Actors (id, name, salary, birth_date, gender)
+VALUES(
+  "005", 
+  "Juliana Paes",
+  719333.33,
+  "1979-03-26", 
+  "female"
+);
+
+-- Ex 3
+-- a)
+SELECT *
+FROM Actors
+WHERE gender = "female";
+
+-- b) 
+SELECT salary
+FROM Actors 
+WHERE name = "Tony Ramos";
+
+-- c) 
+SELECT *
+FROM Actors
+WHERE gender = "invalid";
+-- zero return, não exite nenhum ator com o genero inválido
+-- d)
+SELECT id, name, salary
+FROM Actors
+WHERE salary < 500000;
+-- Tony Ramos, Gloria Pires, Fernanda Montenegro, Antonio Fagundes
+
+-- e)
+SELECT id, name
+FROM Actors 
+WHERE id = "002";
+
+-- O erro foi não retornar erro 
+
+-- Ex 4
+
+SELECT *
+FROM Actors
+WHERE (name LIKE "A%" OR name LIKE "J%") 
+AND salary > 300000;
+
+-- a) Essa query busca entre atores que os nomes começar com as
+-- letras A e J, e que ganham mais de 300000
+-- Antonio Fagundes e Juliana Paes
+
+-- b)
+SELECT *
+FROM Actors
+WHERE (name LIKE "%G%" or name LIKE "%g%")
+AND salary > 350000;
+
+-- Antonio Fagundes
+
+-- c) 
+SELECT *
+FROM Actors
+WHERE (name LIKE "%A%" or name LIKE "%a%" or name LIKE "%g%" or name LIKE "%G%")
+AND salary BETWEEN 350000 AND 900000;
+
+-- Tony Ramos, Antonio Fagundes e Juliana Paes
+-- Ex 5 
+-- a)
+CREATE TABLE Movies (
+	id VARCHAR(255) PRIMARY KEY,
+    title VARCHAR(255) NOT NULL UNIQUE,
+    synopsis TEXT NOT NULL,
+    release_date DATE NOT NULL,
+    rating INT NOT NULL
+);
+
+-- b)
+INSERT INTO Movies (id, title, synopsis, release_date, rating)
+VALUES (
+"001",
+"Se Eu Fosse Você",
+" Cláudio e Helena são casados há muitos anos e enfrentam a rotina do casamento. Um dia eles são atingidos por um fenômeno inexplicável e trocam de corpos",
+"2006-01-06",
+7
+);
+
+-- c)
+INSERT INTO Movies (id, title, synopsis, release_date, rating)
+VALUES (
+"002",
+"Doce de Mãe",
+"Dona Picucha, uma animada senhora de 85 anos, sempre causa grandes confusões. A vida dela e dos seus quatro filhos sofre uma reviravolta depois que Zaida, empregada e amiga de Dona Picucha, anuncia que vai se casar e não poderá mais morar com ela.",
+"2012-12-27",
+10
+);
+
+-- d)
+INSERT INTO Movies (id, title, synopsis, release_date, rating)
+VALUES (
+"003",
+"Dona Flor e Seus Dois Maridos",
+"Dona Flor é uma sedutora professora de culinária casada com Vadinho, que só quer saber de farras e jogatina nas boates. A vida de abusos acaba por acarretar sua morte precoce.",
+"2017-11-02",
+8
+);
+
+-- e)
+INSERT INTO Movies (id, title, synopsis, release_date, rating)
+VALUES (
+"004",
+"O Homem Que Copiava",
+"Um humilde operador de copiadora se apaixona pela vizinha e, para conseguir se aproximar da jovem, se transforma num falsificador de dinheiro.",
+"2003-06-13",
+10
+);
+-- Ex 6
+-- a)
+SELECT *
+FROM Movies
+WHERE id >= 3;
+
+-- b)
+SELECT *
+FROM Movies
+WHERE title = "O Homem Que Copiava";
+
+-- c)
+SELECT id, title, synopsis
+FROM Movies
+WHERE rating <= 7;
+
+-- Ex 7
+-- a)
+SELECT *
+FROM Movies
+WHERE title LIKE "%vida%";
+
+-- b)
+
+-- c)
+SELECT *
+FROM Movies
+WHERE release_date < "2022-08-22";
+
+-- d)
+
+
+`
