@@ -1,0 +1,131 @@
+`
+-- Aprofundamento MySQL
+
+-- a) ALTER TABLE Actor DROP COLUMN salary; apagaria a coluna salary
+
+-- b) ALTER TABLE Actor CHANGE gender sex VARCHAR(6); mudaria o nome da coluna gender para sex, e diminuiria a quantidade de caracteres possíveis de receber para 6
+
+-- c) ALTER TABLE Actor CHANGE gender gender VARCHAR(255); mudaria a quantidade de caracteres que é possível receber na coluna gender
+
+-- d)
+
+ALTER TABLE Actors
+CHANGE gender gender VARCHAR(100);
+
+-- Ex 2
+
+-- a)
+UPDATE Actors
+SET
+name = "Moacir Franco",
+birth_date = "2020-02-10"
+WHERE id = "003";
+
+-- b) 
+UPDATE Actors
+SET name = "JULIANA PAES"
+WHERE name = "Juliana Paes";
+
+UPDATE Actors
+SET name = "Juliana Paes"
+WHERE name = "JULIANA PAES";
+
+-- c)
+UPDATE Actors
+SET
+name = "Moacyr Franco",
+birth_date = "2020-02-10",
+salary = 600000,
+gender = "male"
+WHERE id = "005";
+
+-- Ex 3 
+
+-- a)
+DELETE FROM Actors
+WHERE name = "Fernanda Montenegro";
+
+-- b)
+
+DELETE FROM Actors
+WHERE salary > 100000000;
+
+-- Ex 4
+
+-- a)
+SELECT MAX(salary)
+FROM Actors;
+
+-- b)
+SELECT MIN(salary)
+FROM Actors
+WHERE gender = "female";
+
+-- c)
+SELECT COUNT(*)
+FROM Actors
+WHERE gender = "female";
+
+-- d)
+SELECT SUM(salary)
+FROM Actors;
+
+-- Ex 5
+
+-- a) Deu dois resultados, male e female, com quantos atores/atrises tem em cada um.
+SELECT COUNT(*), gender
+FROM Actors
+GROUP BY gender;
+
+-- b)
+SELECT id, name
+FROM Actors
+ORDER BY name DESC;
+
+-- c)
+SELECT * 
+FROM Actors
+ORDER BY salary;
+
+-- d)
+SELECT *
+FROM Actors
+ORDER BY salary DESC
+LIMIT 3;
+
+-- e)
+SELECT AVG(salary), gender
+FROM Actors
+GROUP BY gender;
+
+-- Ex 6
+
+-- a)
+ALTER TABLE Movies
+ADD playing_limit_date DATE;
+
+-- b)
+ALTER TABLE Movies
+CHANGE rating rating FLOAT;
+
+-- c)
+UPDATE Movies
+SET playing_limit_date = "2020-12-31"
+WHERE id = "001";
+
+UPDATE Movies
+SET playing_limit_date = "2022-12-31"
+WHERE id = "004";
+
+-- d)
+DELETE FROM Movies
+WHERE id = "001";
+
+UPDATE Movies
+SET playing_limit_date = "2022-12-31"
+WHERE id = "001";
+
+-- Zero rows affected, 0 linhas foram afetadas, 0 mudanças, porque não exites mais o ID 001
+
+
+`
