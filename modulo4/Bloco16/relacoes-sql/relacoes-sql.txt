@@ -1,0 +1,147 @@
+`
+-- RELAÇOES EM SQL
+
+-- Ex 1
+CREATE TABLE Rating (
+id VARCHAR(255) PRIMARY KEY,
+comment TEXT NOT NULL,
+rate FLOAT NOT NULL,
+movie_id VARCHAR(255),
+FOREIGN KEY (movie_id) REFERENCES Movies(id)
+);
+
+-- a) É uma forma de relacionar as tabelas, a Foreign Key de uma tabela, é a Primary Key de outra
+DESCRIBE Movies;
+-- b)
+INSERT Rating (id, comment, rate, movie_id)
+VALUES (
+"001",
+"Fantástico!",
+10,
+"004"
+);
+
+-- c) 
+INSERT Rating (id, comment, rate, movie_id)
+VALUES (
+"002",
+"Péssimo",
+0,
+"010"
+);
+-- Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`ailton-maria-silva`.`Rating`, CONSTRAINT `Rating_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movies` (`id`))	0.156 sec
+-- Diz que a Foreign Key falhou ao referenciar movie_id 
+
+-- d) 
+ALTER TABLE Movies
+DROP COLUMN rating;
+
+-- e)
+DELETE 
+FROM Movies
+WHERE id="004";
+-- Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`ailton-maria-silva`.`Rating`, CONSTRAINT `Rating_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movies` (`id`))	0.140 sec
+-- Não pode apagar, pq esse filme está sendo referenciado pela tabela Rating
+
+-- Ex 2
+CREATE TABLE MovieCast (
+movie_id VARCHAR(255),
+actor_id VARCHAR(255),
+FOREIGN KEY (movie_id) REFERENCES Movies(id),
+FOREIGN KEY (actor_id) REFERENCES Actors(id)
+);
+
+-- a)
+-- a linha movie_id referencia a primary key id da tabela Movies
+-- a linha actor_id referencia a primary key id da tabela Actors
+-- no exemplo abaixo, vou inserir o ator de id 001 no filme de id 004
+
+-- b)
+INSERT INTO MovieCast(movie_id, actor_id)
+VALUES(
+"004",
+"001"
+);
+INSERT INTO MovieCast(movie_id, actor_id)
+VALUES(
+"004",
+"002"
+);
+INSERT INTO MovieCast(movie_id, actor_id)
+VALUES(
+"004",
+"003"
+);
+INSERT INTO MovieCast(movie_id, actor_id)
+VALUES(
+"002",
+"001"
+);
+INSERT INTO MovieCast(movie_id, actor_id)
+VALUES(
+"002",
+"002"
+);
+INSERT INTO MovieCast(movie_id, actor_id)
+VALUES(
+"002",
+"003"
+);
+INSERT INTO MovieCast(movie_id, actor_id)
+VALUES(
+"002",
+"004"
+);
+
+-- c)
+INSERT INTO MovieCast(movie_id, actor_id)
+VALUES(
+"012",
+"001"
+);
+-- Error Code: 1452. Cannot add or update a child row: a foreign key constraint fails (`ailton-maria-silva`.`MovieCast`, CONSTRAINT `MovieCast_ibfk_1` FOREIGN KEY (`movie_id`) REFERENCES `Movies` (`id`))	0.141 sec
+-- Não pode, porque não encontrou a referencia ao id 12
+
+-- d)
+DELETE 
+FROM Actors
+WHERE id = "001";
+
+-- Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`ailton-maria-silva`.`MovieCast`, CONSTRAINT `MovieCast_ibfk_2` FOREIGN KEY (`actor_id`) REFERENCES `Actors` (`id`))	0.141 sec
+-- Diz que não pode deletar ou alterar uma linha pai, onde o id está sendo referenciado pela tabela MovieCast
+
+
+-- Ex 3
+
+-- a)
+SELECT * FROM Movies 
+INNER JOIN Rating ON Movies.id = Rating.movie_id;
+
+-- Ele dá uma condição 
+
+-- b)
+
+SELECT m.id as movie_id, r.rate as rating 
+FROM Movies m 
+JOIN Rating r ON m.id = r.movie_id;
+
+-- Ex 4 
+
+-- a)
+SELECT m.id as movie_id, m.title, r.rate as rating, r.comment as rating_comment
+FROM Movies m
+LEFT JOIN Rating r 
+ON m.id = r.movie_id;
+
+-- b)
+SELECT m.id as movie_id, m.title, mc.actor_id
+FROM Movies m
+RIGHT JOIN MovieCast mc
+ON mc.movie_id = m.id;
+
+-- c)
+SELECT AVG(r.rate), m.id, m.title 
+FROM Movies m
+LEFT JOIN Rating r ON m.id = r.movie_id
+GROUP BY (m.id);
+`
