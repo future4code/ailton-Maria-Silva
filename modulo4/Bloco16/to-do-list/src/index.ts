@@ -78,12 +78,80 @@ app.get("/user/:id", (req, res) =>{
 })
 
 // Ex 3
+app.put("/user/edit/:id", (req, res) => {
+    let errorCode = 400
+
+    try {
+        const id = Number(req.params.id)
+        const user = users.find((user) => {
+            return user.id === id
+        })
+        if(!id) {
+            errorCode = 404
+            throw new Error("Usuário não encontrado, por favor, tente um id válido")
+        }
+        const {name, nickname, email} = req.body;
+        if (!name || !nickname || !email) {
+            errorCode = 422
+            throw new Error ("Por favor, preencha todos os campos para prosseguir.")
+        }
+        const newUser = {
+            name,
+            nickname,
+            email
+        }
+        users.push(newUser)
+        res.status(201).send({message: "Usuário alterado com sucesso!"})
+
+    } catch (error: any) {
+        res.status(errorCode || 500).send({message: error.message}) 
+    }
+})
 
 
 // Ex 4
+app.post("/task", (req, res) =>{
+    let errorCode = 400
+
+    try {
+        const {title, description, status, limit_date} = req.body;
+        if (!title || !description || !status || !limit_date) {
+            errorCode = 422
+            throw new Error ("Por favor, preencha todos os campos para prosseguir.")
+        }
+        const newTask = {
+            title,
+            description,
+            status,
+            limit_date
+        }
+        taskList.push(newTask)
+        res.status(201).send({message: "Tarefa adicionada com sucesso!"})
+
+    } catch (error: any) {
+        res.status(errorCode || 500).send({message: error.message})
+    }
+})
 
 
 // Ex 5
+app.get("/task/:id", (req, res) =>{
+    let errorCode = 400
+
+    try {
+        const id = Number(req.params.id)
+        const task = taskList.find((task) => {
+            return task.id === id
+        })
+        if(!id) {
+            errorCode = 404
+            throw new Error("Tarefa não encontrada, por favor, tente um id válido")
+        }
+        res.status(200).send(taskList)
+    } catch (error: any) {
+        res.status(errorCode || 500).send({message: error.message})        
+    }
+})
 
 
 // Ex 6
