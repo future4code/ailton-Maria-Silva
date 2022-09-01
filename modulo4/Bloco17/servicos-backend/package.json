@@ -17,6 +17,9 @@
     "start": "tsc && node ./build/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines": {
+    "node": "v16.15.0"
+  },
   "author": "Carol",
   "license": "ISC",
   "devDependencies": {
