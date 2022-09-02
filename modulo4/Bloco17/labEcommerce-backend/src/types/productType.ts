@@ -3,3 +3,10 @@ export type Product = {
     price: number,
     image_url: string
 }
+
+export type AddProduct = {
+    id: string,
+    name: string,
+    price: number,
+    image_url: string
+}

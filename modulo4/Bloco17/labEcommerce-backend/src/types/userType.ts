@@ -3,3 +3,10 @@ export type User = {
     email: string,
     password: string
 }
+
+export type AddUser = {
+    id: string,
+    name: string,
+    email: string,
+    password: string
+}

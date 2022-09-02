@@ -1,0 +1,32 @@
+POST http://localhost:3003/users
+Content-Type: application/json
+
+{
+    "name": "Carol Silva",
+    "email": "carolsilva@gmail.com",
+    "password": "123456ah"
+}
+
+###
+
+GET http://localhost:3003/users
+Content-Type: application/json
+
+###
+
+POST http://localhost:3003/products
+Content-Type: application/json
+
+{
+    "name": "NoteBook",
+    "price": 1000.00,
+    "image_url": "https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ"
+}
+
+###
+
+GET http://localhost:3003/products
+Content-Type: application/json
+
+###
+

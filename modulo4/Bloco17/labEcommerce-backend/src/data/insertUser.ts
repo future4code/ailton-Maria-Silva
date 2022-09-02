@@ -1,12 +1,14 @@
-import { User } from "../types/userType";
+import { AddUser, User } from "../types/userType";
 import { connection } from "./connections";
 
-export async function insertUser(){
-    try{
-        await connection().insert({
-            name
+export async function insertUser(insertUser: AddUser): Promise<string>{
+    
+        await connection("labecommerce_users").insert({
+            id: insertUser.id,
+            name: insertUser.name,
+            email: insertUser.email,
+            password: insertUser.password
         })
-    } catch (error:any){
 
-    }
+        return `Usuario criado com sucesso.`
 }
