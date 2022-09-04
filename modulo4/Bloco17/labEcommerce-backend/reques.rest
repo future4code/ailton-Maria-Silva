@@ -18,7 +18,7 @@ POST http://localhost:3003/products
 Content-Type: application/json
 
 {
-    "name": "NoteBook",
+    "name": "Notebook",
     "price": 1000.00,
     "image_url": "https://i.picsum.photos/id/0/5616/3744.jpg?hmac=3GAAioiQziMGEtLbfrdbcoenXoWAW-zlyEAMkfEdBzQ"
 }
@@ -30,3 +30,16 @@ Content-Type: application/json
 
 ###
 
+POST http://localhost:3003/purchases
+Content-Type: application/json
+
+{
+    "userId": "asdasdfas",
+    "productId": "aasedfas",
+    "quantity": 5
+}
+
+### 
+
+GET http://localhost:3003/users/:user_id/purchases
+Content-Type: application/json

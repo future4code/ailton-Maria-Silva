@@ -16,7 +16,9 @@ export async function createProduct (req: Request, res: Response){
             price,
             image_url
         }
-        const aswer = await insertProduct(addProduct)
+        const createdProduct = await insertProduct(addProduct)
+
+        res.status(201).send({message: createdProduct})
 
     } catch(error:any){
         res.status(500).send({message: error.message})

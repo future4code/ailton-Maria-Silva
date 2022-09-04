@@ -1,4 +1,4 @@
-import { AddUser, User } from "../types/userType";
+import { AddUser } from "../types/userType";
 import { connection } from "./connections";
 
 export async function insertUser(insertUser: AddUser): Promise<string>{
@@ -9,6 +9,5 @@ export async function insertUser(insertUser: AddUser): Promise<string>{
             email: insertUser.email,
             password: insertUser.password
         })
-
         return `Usuario criado com sucesso.`
 }
