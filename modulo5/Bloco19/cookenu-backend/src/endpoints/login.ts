@@ -19,7 +19,7 @@ export async function login (req: Request, res: Response){
             throw new Error ("E-mail não está cadastrado.")
         }
         const hashManager = new HashManager()
-        const passwordIsCorrect = hashManager.compare(password, user.getPassword())
+        const passwordIsCorrect = await hashManager.compare(password, user.getPassword())
         if(!passwordIsCorrect){
             throw new Error ("E-mail ou senha incorreto.")
         }

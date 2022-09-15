@@ -1,5 +1,4 @@
 import * as jwt from "jsonwebtoken"
-//import { USER_ROLES } from "../model/User"
 
 export interface AuthenticationData{
     id:string

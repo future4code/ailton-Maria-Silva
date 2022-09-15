@@ -1,10 +1,20 @@
 import {Request, Response} from "express"
-import { UserDataBase } from "../data/UserDataBase"
-import { User } from "../model/User"
-import { Authenticator } from "../services/Authenticator"
-import { HashManager } from "../services/HashManager"
-import { IdGenerator } from "../services/idGenerator"
 
+export async function postarReceita (req: Request, res: Response) {
+    try {
+
+        const {title, description, createdAt} = req.body
+        
+        if (!title || !description || !createdAt){
+            throw new Error("Preencha todos os campos para continuar.")
+        }
+        
+    } catch (error:any) {
+        
+    }
+}
+
+/*
 export async function signup (req: Request, res: Response){
     try {
         const {name, email, password} = req.body
@@ -16,7 +26,8 @@ export async function signup (req: Request, res: Response){
         if(!name || !email || !password){
             throw new Error("Preencha todos os campos para continuar.")
         }
-        
+        console.log("asdasfdsfadgsf")
+
         const userDataBase = new UserDataBase()
         
         const user = await userDataBase.findUserByEmail(email)
@@ -43,3 +54,4 @@ export async function signup (req: Request, res: Response){
         res.status(500).send({message:error.message})
     }
 }
+*/

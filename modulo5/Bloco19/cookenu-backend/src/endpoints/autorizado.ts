@@ -12,9 +12,6 @@ export async function getAll(req: Request, res: Response){
 
         const authenticator = new Authenticator()
         const tokenData = authenticator.getTokenData(token)
-        if(tokenData.role !== "ADMIN"){
-            throw new Error ("Somente admin podem acessar essa funcionalidade")
-        }
         const userDataBase = new UserDataBase();
         const users = await userDataBase.getAllUsers();
         res.status(200).send(users)

@@ -17,13 +17,25 @@ export class UserDataBase extends BaseDataBase {
         }
     }
 
-    public async findUserByEmail(email:string): Promise<User>{
+    public async findUserByEmail(email:string): Promise<User | undefined>{
+        try {
+            const user = await this.getConnection()
+            .select("*")
+            .from("User_Cookenu")
+            .where({email: email});
+            return user[0] && User.toUserModel(user[0]);
+        } catch (error:any) {
+            throw new Error(error.sql.message || error.message)
+        }
+    }
+
+    public async findUserById(id:string): Promise<User | undefined>{
         try {
             const user = await BaseDataBase.connection("User_Cookenu")
             .select("*")
-            .where({email: email});
-
-            return User.toUserModel(user[0]);
+            .from("User_Cookenu")
+            .where({id: id});
+            return user[0] && User.toUserModel(user[0]);            
         } catch (error:any) {
             throw new Error(error.sql.message || error.message)
         }
