@@ -32,7 +32,7 @@ export class UserDataBase extends BaseDataBase {
     public async findUserById(id:string): Promise<User | undefined>{
         try {
             const user = await BaseDataBase.connection("User_Cookenu")
-            .select("*")
+            .select("id", "name", "email")
             .from("User_Cookenu")
             .where({id: id});
             return user[0] && User.toUserModel(user[0]);            

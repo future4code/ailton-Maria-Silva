@@ -20,7 +20,7 @@ export async function getUser (req: Request, res: Response){
         const userDataBase = new UserDataBase()
         
         const user = await userDataBase.findUserById(tokenData.id)
-
+        
         res.status(200).send({message: user})
 
     }catch (error:any){

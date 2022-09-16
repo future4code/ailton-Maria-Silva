@@ -1,28 +1,22 @@
 import { Request, Response } from "express";
-import { UserDataBase } from "../data/UserDataBase";
+import { RecipeDataBase } from "../data/RecipeDataBase";
 import { Authenticator } from "../services/Authenticator";
 
-export async function followUser (req: Request, res: Response){
+export async function getRecipeFromUser (req: Request, res: Response){
     try{
         const token = req.headers.authorization as string
-        const userToFollow = req.params.id
-        
+        const id = req.params.id
         const authenticator = new Authenticator();
-
         if(!token){
             throw new Error ("Acesso negado.")
         }
         const tokenData = authenticator.getTokenData(token)
-
         if(!tokenData.id){
             throw new Error("Necessário passar id")
         }
-        const userDataBase = new UserDataBase()
-        
-        const searchUserToFollow = await userDataBase.findUserById(userToFollow)
-        
-        res.status(200).send({message: searchUserToFollow })
-
+        const recipeDataBase = new RecipeDataBase()
+        const recipeById = await recipeDataBase.findRecipeById
+        res.status(200).send(recipeById)
     }catch (error:any){
         res.status(500).send({message:error.message})
     }

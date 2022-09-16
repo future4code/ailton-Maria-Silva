@@ -12,7 +12,7 @@ export class RecipeDataBase extends BaseDataBase{
                 description: recipe.getDescription(),
                 created_at: recipe.getCreatedAt(),
                 user_id: recipe.getUserId()
-            })
+            }).into("Receitas_Cookenu")
         } catch (error:any) {
             throw new Error(error.sql.message || error.message)
         }
@@ -24,6 +24,17 @@ export class RecipeDataBase extends BaseDataBase{
             .select("*")
             .from("Receitas_Cookenu")
             .where({title: title});
+            return recipe[0] && Recipe.toRecipeModel(recipe[0])
+        } catch (error:any) {
+            throw new Error(error.sql.message || error.message)
+        }
+    }
+    public async findRecipeById(id:string): Promise<Recipe | undefined>{
+        try {
+            const recipe = await this.getConnection()
+            .select("*")
+            .from("Receitas_Cookenu")
+            .where({id: id});
             return recipe[0] && Recipe.toRecipeModel(recipe[0])
         } catch (error:any) {
             throw new Error(error.sql.message || error.message)
