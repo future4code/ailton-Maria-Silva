@@ -50,3 +50,8 @@ export class Post {
         this.likes = newLikes
     }
 }
+export interface IPostDTO {
+    content: string,
+    userId: string,
+    likes: number
+}

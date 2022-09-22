@@ -17,5 +17,9 @@ const userController = new UserController(
     )
 )
 
-// userRouter.post("/signup", userController.signup)
-// etc
+userRouter.post("/signup", userController.signup)
+userRouter.post("/login", userController.login)
+//userRouter.post("/criar-post")
+//userRouter.get("/ver-post")
+//userRouter.delete("/delete")
+//userRouter.post("/post/like")

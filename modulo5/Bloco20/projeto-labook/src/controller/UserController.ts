@@ -49,7 +49,7 @@ export class UserController {
             const response = await this.userBusiness.getUsers(input)
             res.status(200).send(response)
         } catch (error:any) {
-            res.status(500).send(message: error.message)
+            res.status(500).send({message: error.message})
         }
     }
 
