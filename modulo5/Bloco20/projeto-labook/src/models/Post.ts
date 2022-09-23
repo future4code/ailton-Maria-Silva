@@ -55,3 +55,15 @@ export interface IPostDTO {
     userId: string,
     likes: number
 }
+export interface IGetPostInput{
+    token: string,
+    
+}
+export interface CreatePostInputDTO{
+    token: string,
+    content: string
+}
+export interface PostOutput{
+    message: string,
+    post: Post
+}
