@@ -50,6 +50,29 @@ export class Post {
         this.likes = newLikes
     }
 }
+export interface IPostDB{
+    id: string,
+    content: string,
+    user_id: string
+}
+export interface GetPostsOutputDTO{
+    id: string,
+    content: string,
+    userId: string,
+    likes: number
+}
+export interface GetPostInputDTO{
+    token: string
+}
+export interface IDeletePostDTO{
+    token: string,
+    idPost: string
+}
+export interface ILikeDB{
+    id: string,
+    post_id: string,
+    user_id: string
+}
 export interface IPostDTO {
     content: string,
     userId: string,
