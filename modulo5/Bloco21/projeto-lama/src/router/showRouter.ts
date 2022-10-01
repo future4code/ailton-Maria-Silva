@@ -15,4 +15,8 @@ const showController = new ShowController(
         new Authenticator()
     )
 )
+showRouter.post("/", showController.createShow)
+showRouter.get("/", showController.getAllShows)
+showRouter.post("/tickets", showController.reserveTickets)
+showRouter.delete("/tickets/:id", showController.deleteReservedTicket)
 

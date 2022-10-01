@@ -16,7 +16,7 @@ export class ShowBusiness {
         private authenticator: Authenticator
     ) {}
 
-    protected createShow = async (input: ICreateShowInputDTO ) => {
+    public createShow = async (input: ICreateShowInputDTO ) => {
         
         const { token, band, tickets } = input
 
@@ -76,8 +76,8 @@ export class ShowBusiness {
         return response
 
     }
-    protected reserveTickets = async (input: IReserveTicketInputDTO) => {
-        // showId e userId - vai gerar um id do ticket
+    public reserveTickets = async (input: IReserveTicketInputDTO) => {
+        
         const { token, showId } = input 
         
         const payload = this.authenticator.getTokenPayload(token)
@@ -110,8 +110,8 @@ export class ShowBusiness {
         return response
 
     }
-    protected deleteReservedTicket = async (input: IDeleteTicketInputDTO) => {
-        // ticketId 
+    public deleteReservedTicket = async (input: IDeleteTicketInputDTO) => {
+        
         const {token, ticketId} = input 
 
         const payload = this.authenticator.getTokenPayload(token)
