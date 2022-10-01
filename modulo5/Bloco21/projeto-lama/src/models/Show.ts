@@ -1,4 +1,5 @@
 export interface IShowDB {
+    tickets: number | undefined
     id: string,
     band: string,
     starts_at: Date
@@ -52,6 +53,7 @@ export class Show {
 }
 export interface ICreateShowInputDTO {
     token: string,
+    tickets: number,
     band: string
 }
 export interface ICreateShowOutputDTO {
@@ -64,9 +66,17 @@ export interface IGetShowsInputDTO {
 export interface IGetShowsOutputDTO {
     shows: Show[]
 }
-export interface IDeleteShowInputDTO {
-    token: string
+export interface IReserveTicketInputDTO{
+    token: string,
+    showId: string
 }
-export interface IDeleteShowOutputDTO {
+export interface IReserveTicketOutpuDTO{
+    message: string
+}
+export interface IDeleteTicketInputDTO{
+    token: string,
+    ticketId: string
+}
+export interface IDeleteTicketOutputDTO{
     message: string
 }
