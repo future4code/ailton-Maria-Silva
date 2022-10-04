@@ -28,7 +28,12 @@ class Migrations extends BaseDatabase {
 
     createTables = async () => {
         await BaseDatabase.connection.raw(`
-        DROP TABLE IF EXISTS ${UserDatabase.TABLE_USERS};
+        DROP TABLE IF EXISTS Amb_Orders_Order_Items;
+        DROP TABLE IF EXISTS Amb_Order_Items;
+        DROP TABLE IF EXISTS Amb_Orders;
+        DROP TABLE IF EXISTS Amb_Pizzas_Ingredients;
+        DROP TABLE IF EXISTS Amb_Ingredients;
+        DROP TABLE IF EXISTS Amb_Pizzas;
         
         CREATE TABLE IF NOT EXISTS ${UserDatabase.TABLE_USERS}(
             id VARCHAR(255) PRIMARY KEY,
