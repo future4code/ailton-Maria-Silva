@@ -1,12 +1,16 @@
+export interface ITagsDB {
+    tag: string
+}
+
 export interface IProductDB {
-    id: number,
+    id: string,
     name: string,
-    tags: string[]
+    tags: ITagsDB[]
 }
 
 export class Product {
     constructor (
-        private id: number,
+        private id: string,
         private name: string,
         private tags: string[]
     ) {}
