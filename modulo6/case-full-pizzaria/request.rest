@@ -1,18 +1,27 @@
-### Signup
-POST http://localhost:3003/users/signup
+### Get Pizzas
+GET http://localhost:3003/api/pizzas
+Content-Type: application/json
+
+### Get Pizzas Versão 2
+GET http://localhost:3003/api/pizzas/v2
+Content-Type: application/json
+
+### Create Orders
+POST http://localhost:3003/api/orders
 Content-Type: application/json
 
 {
-    "name": "alice",
-    "email": "alice@gmail.com",
-    "password": "alice99"
+    "pizzas": [
+        {
+            "name": "Margherita",
+            "quantity": 5
+        },
+        {
+            "name": "Bufala",
+            "quantity": 2
+        }
+    ]
 }
 
-### Login
-POST http://localhost:3003/users/login
-Content-Type: application/json
-
-{
-    "email": "astrodev@gmail.com",
-    "password": "bananinha"
-}
+### Get Orders
+GET http://localhost:3003/api/orders
