@@ -1,6 +1,7 @@
 import { useState } from "react"
 import PizzasMenu from "./screens/PizzaMenu"
 import OrderSummary from "./screens/OrderSummary"
+import styled from "styled-components"
 
 export const ContainerMain = styled.main`
   display: flex;

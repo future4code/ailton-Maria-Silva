@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const ContainerList = styled.li`
+export const PizzaContainerLi = styled.li`
     border: 1px sloid black;
     margin: 1em;
     display: flex;
@@ -16,7 +16,7 @@ function PizzaCard(props){
     const {pizza, addToCart} = props
 
     return (
-        <ContainerList>
+        <PizzaContainerLi>
             <h3>{pizza.name}</h3>
             <p className="card-price">
                 {pizza.price.toLocaleString(
@@ -32,7 +32,7 @@ function PizzaCard(props){
                 })}
             </p>
             <button onClick={()=> addToCart(pizza)}>Adicionar no carrinho</button>
-        </ContainerList>
+        </PizzaContainerLi>
     )
 }
 export default PizzaCard

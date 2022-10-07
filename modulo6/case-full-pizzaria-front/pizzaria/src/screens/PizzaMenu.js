@@ -9,9 +9,6 @@ export const ContainerSection = styled.section`
         display: flex;
     }
 `
-export const PizzaCard = styled.div`
-
-`
 function PizzasMenu(props) {
     const { addCart } = props
 
