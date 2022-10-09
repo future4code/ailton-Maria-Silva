@@ -1,23 +1,21 @@
-import styled from "styled-components"
-
-export const ContainerLi = styled.li`
-    display: flex;
-`
+import { ContainerLi } from "./styled"
 
 function OrderItemCard(props){
-    const { pizza, removFromCart } = props
+    const { pizza, removeFromCart } = props
 
     return (
         <ContainerLi>
             <p>
-                Pizza {pizza.name}
+                SABOR: {pizza.name}
+            </p>
+            <p>    
                 - {pizza.price.toLocaleString(
                     'pt-br',
                     { styled: 'currency', currency: 'USD'}
                 )}
                 {" "} x {pizza.quantity}
             </p>
-            <button onClick={()=> removeFromCart(pizza)}>Remover item</button>
+            <button onClick={()=> removeFromCart(pizza)}>REMOVER ITEM</button>
         </ContainerLi>
     )
 }

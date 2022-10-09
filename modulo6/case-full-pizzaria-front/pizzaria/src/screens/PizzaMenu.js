@@ -1,16 +1,11 @@
 import axios from "axios"
-import styled from "styled-components"
+import { PizzaContainerSection } from "./styled"
 import { useEffect, useState } from "react"
 import { BASE_URL } from "../constants"
 import PizzaCard from "../components/PizzaCard"
 
-export const ContainerSection = styled.section`
-    ul{
-        display: flex;
-    }
-`
 function PizzasMenu(props) {
-    const { addCart } = props
+    const { addToCart } = props
 
     const [pizzas, setPizzas ] = useState([])
 
@@ -20,12 +15,12 @@ function PizzasMenu(props) {
             setPizzas(response.data.pizzas)
         })
         .catch((error) =>{
-            console.log(error)
+            alert(error)
         })
     }, [])
     
     return (
-        <ContainerSection>
+        <PizzaContainerSection>
             <ul>
                 {pizzas.map((pizza)=>{
                     return(
@@ -37,7 +32,7 @@ function PizzasMenu(props) {
                     )
                 })}
             </ul>
-        </ContainerSection>
+        </PizzaContainerSection>
     )
 }
 export default PizzasMenu;

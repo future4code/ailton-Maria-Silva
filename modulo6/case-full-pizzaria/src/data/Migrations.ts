@@ -1,6 +1,6 @@
-import { BaseDatabase } from "../BaseDatabase"
-import { OrderDatabase } from "../OrderDatabase"
-import { PizzaDatabase } from "../PizzaDatabase"
+import { BaseDatabase } from "./BaseDatabase"
+import { OrderDatabase } from "./OrderDatabase"
+import { PizzaDatabase } from "./PizzaDatabase"
 import { ingredientsSeed, pizzasIngredientsSeed, pizzasSeed } from "./data"
 
 class Migrations extends BaseDatabase {

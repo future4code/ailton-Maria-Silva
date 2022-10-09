@@ -1,4 +1,4 @@
-import { IIngredientsDB, IPizzaDB, IPizzasIngredientsDB } from "../../models/Pizza";
+import { IIngredientsDB, IPizzaDB, IPizzasIngredientsDB } from "../models/Pizza";
 
 export const pizzasSeed: IPizzaDB[] = [
     {

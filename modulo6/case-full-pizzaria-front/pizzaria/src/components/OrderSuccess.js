@@ -1,46 +1,40 @@
-import styled from "styled-components"
+import { SuccessContainerDiv } from "./styled"
 
-export const SuccessContainerDiv = styled.div`
-    border: 1px solid black;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: auto;
-    background-color: white;
-    >div{
-        position: relative;
-        width: 100%;
-        height: 100%;
-        .close-popup{
-            position: absolute;
-            top: 0;
-            left: 100%;
-            transform: translateX(-100);
-            padding: 2px 5px;
-            width: auto;
-            :hover{
-                cursor: pointer;
-                font-weight: bold;
-                background-color: lightgray;
-            }
-        }
-    }
-`
 function OrderSuccessPopUp(props) {
-    const {order, closePopUp } = props
+    const {order, closePopup } = props
 
     return (
         <SuccessContainerDiv>
             <div>
+                <span 
+                className= "close-popup"
+                onClick={closePopup}> x </span>
                 <h2> Pedido realizado com sucesso! </h2>
-                <h3> Resumo do pedido: </h3>
-                <p> Id do pedido: {order.id} </p>
-                {order?.pizza.map((pizza) =>{
-                    <p>
+                <h3> RESUMO DO PEDIDO: </h3>
+                <p> ID DO PEDIDO: {order.id} </p>
+                {order.pizzas.map((pizza) =>{
+                    return(
+                        <p key={pizza.name}>
                         Pizza {pizza.name} {" "}
-                    </p>
+                        - {pizza.price.toLocaleString(
+                            'pt-br',
+                            {style: 'currency', currency: 'USD'}
+                        )}
+                        {" "} x {pizza.quantity}
+                        </p>
+                    )
+                    
                 })}
+                <p>
+                    TOTAL PAGO: {
+                        order.total.toLocaleString(
+                            'pt-br',
+                            {style: 'currency', currency: 'USD'}
+                        )
+                    }
+                </p>
             </div>
         </SuccessContainerDiv>
     )
 }
+export default OrderSuccessPopUp;
