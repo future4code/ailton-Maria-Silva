@@ -1,42 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { API_KEY, BASE_URL } from "../../services/BASE_URL";
-import styled from "styled-components"
+import { BASE_URL } from "../../services/BASE_URL";
 import { Link } from "react-router-dom"
-
-const MoviesDiv = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    padding-right: 12%;
-    padding-left: 12%;
-    border: 2px solid purple;
-    margin-right: 4%;
-    margin-left: 4%;
-    gap: 4%;
-    line-gap-override: 4%;
-`
-const MoviePosterImg = styled.img`
-    //position: absolute;
-    width: 176px;
-    height: 264px;
-`
-const PosterDiv = styled.div`
-    border: 2px solid pink;
-    padding-bottom: 8%;
-    >p{
-        font-weight: bold;
-    }
-    >span{
-        color: gray;
-    }
-`
+import { BigDiv, TextDiv, MoviesDiv, MoviePosterImg, PosterDiv, ButtonsDiv } from "./styled"
 
 function Home (){
     const [movies, setMovies] = useState([]);
-    const [genre, setGenre] = useState();
+    const [genre, setGenre] = useState([]);
 
     useEffect(()=>{
         async function loadingMovies(){
@@ -48,18 +18,58 @@ function Home (){
                 }
             })
             setMovies(response.data.results)
+            filterGenre(response.data.results)
         }
         loadingMovies()
     }, [])
-    console.log(movies)
+    //console.log(movies)
+
+    const filterGenre = (movies) =>{
+        const arrayGenre = [];
+        movies.map((movie)=>{
+            arrayGenre.push(movie.genre_ids)
+        })
+        const newArryGenre = [...new Set(arrayGenre)]
+        setGenre(newArryGenre)
+        
+    }
+    //console.log(genre)
     
     return (
         <div>
+             <BigDiv>
+                <TextDiv>
+                    <h1>Milhões de filmes, séries e pessoas para descobrir.
+                        Explore já</h1>
+                    <p> FILTRE POR: </p>
+                </TextDiv>
+                <ButtonsDiv>
+                    <button>AÇÃO</button>
+                    <button>AVENTURA</button>
+                    <button>ANIMAÇÃO</button>
+                    <button>COMÉDIA</button>
+                    <button>CRIME</button>
+                    <button>DOCUMENTÁRIO</button>
+                    <button>DRAMA</button>
+                    <button>FAMÍLIA</button>
+                    <button>FANTASIA</button>
+                    <button>HISTÓRIA</button>
+                    <button>TERROR</button>
+                    <button>MÚSICA</button>
+                    <button>MISTÉRIO</button>
+                    <button>ROMANCE</button>
+                    <button>FICÇÃO CIENTÍFICA</button>
+                    <button>CINEMA TV</button>
+                    <button>THIRLER</button>
+                    <button>GUERRA</button>
+                    <button>FAROESTE</button>
+                </ButtonsDiv>
+            </BigDiv>
             <MoviesDiv>
                 {movies.map((movie)=>{
                     return(
                         <PosterDiv key={movie.id}>
-                            <Link to={`/filmes/${movie.id}`}><MoviePosterImg src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title}/></Link>
+                            <Link to={`/filme/${movie.id}`}><MoviePosterImg src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title}/></Link>
                             <p>{movie.title}</p>
                             <span>{movie.release_date}</span>
                         </PosterDiv>
