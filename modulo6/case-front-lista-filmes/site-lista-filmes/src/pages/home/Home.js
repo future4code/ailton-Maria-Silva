@@ -7,6 +7,7 @@ import { BigDiv, TextDiv, MoviesDiv, MoviePosterImg, PosterDiv, ButtonsDiv } fro
 function Home (){
     const [movies, setMovies] = useState([]);
     const [genre, setGenre] = useState([]);
+    //const [button, setButton] = useState(false)
 
     useEffect(()=>{
         async function loadingMovies(){
@@ -22,18 +23,22 @@ function Home (){
         }
         loadingMovies()
     }, [])
-    //console.log(movies)
+    console.log(movies)
 
     const filterGenre = (movies) =>{
         const arrayGenre = [];
         movies.map((movie)=>{
             arrayGenre.push(movie.genre_ids)
         })
-        const newArryGenre = [...new Set(arrayGenre)]
-        setGenre(newArryGenre)
+        const newArrayGenre = [...new Set(arrayGenre)]
+        setGenre(newArrayGenre)
         
     }
-    //console.log(genre)
+    console.log(genre)
+
+    const buttonClicked = () =>{
+
+    }
     
     return (
         <div>
@@ -44,6 +49,29 @@ function Home (){
                     <p> FILTRE POR: </p>
                 </TextDiv>
                 <ButtonsDiv>
+                    <button>AÇÃO</button>
+                </ButtonsDiv>
+            </BigDiv>
+            <MoviesDiv>
+                {movies.map((movie)=>{
+                    return(
+                        <PosterDiv key={movie.id}>
+                            <Link to={`/filme/${movie.id}`}><MoviePosterImg src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title}/></Link>
+                            <p>{movie.title}</p>
+                            <span>{movie.release_date}</span>
+                        </PosterDiv>
+                    )
+                })}
+            </MoviesDiv>
+        </div>
+    )
+};
+
+export default Home;
+
+
+/*
+
                     <button>AÇÃO</button>
                     <button>AVENTURA</button>
                     <button>ANIMAÇÃO</button>
@@ -63,21 +91,11 @@ function Home (){
                     <button>THIRLER</button>
                     <button>GUERRA</button>
                     <button>FAROESTE</button>
-                </ButtonsDiv>
-            </BigDiv>
-            <MoviesDiv>
-                {movies.map((movie)=>{
-                    return(
-                        <PosterDiv key={movie.id}>
-                            <Link to={`/filme/${movie.id}`}><MoviePosterImg src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title}/></Link>
-                            <p>{movie.title}</p>
-                            <span>{movie.release_date}</span>
-                        </PosterDiv>
-                    )
-                })}
-            </MoviesDiv>
-        </div>
-    )
-};
+                    
+                    const PokeCard = ({pokemon, isPokedex}) =>{
+                    const navigate = useNavigate()
+                    const {pokemons, setPokemons, pokedex, setPokedex} = useContext(GlobalStateContext)
+                    
+                    <button onClick={isPokedex ? addPokedex : RemovePokedex}> {isPokedex ? addPokedex : RemovePokedex } </button>
 
-export default Home;
+*/
