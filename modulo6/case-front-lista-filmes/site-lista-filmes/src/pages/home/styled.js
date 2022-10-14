@@ -21,13 +21,13 @@ export const BigDiv = styled.div`
     top: 56px;
     color: white;
     background-color: #2D0C5E;
+    margin-left: 4.55%;
     
 `
 export const ButtonsDiv = styled.div` 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    //border: 1px solid white;
     align-items: center;
     justify-content: center;
     padding-right: 4%;
@@ -64,20 +64,19 @@ export const MoviesDiv = styled.div`
     justify-content: center;
     padding-right: 12%;
     padding-left: 12%;
-    border: 2px solid purple;
-    margin-right: 4%;
-    margin-left: 4%;
+    margin-right: 4.55%;
+    margin-left: 4.55%;
     gap: 4%;
-    line-gap-override: 4%;
 `
 export const MoviePosterImg = styled.img`
-    //position: absolute;
     width: 176px;
     height: 264px;
 `
 export const PosterDiv = styled.div`
-    border: 2px solid pink;
-    padding-bottom: 8%;
+    padding-bottom: 4%;
+    padding-top: 4%;
+    width: 200px;
+    height: 400px;
     >p{
         font-weight: bold;
     }

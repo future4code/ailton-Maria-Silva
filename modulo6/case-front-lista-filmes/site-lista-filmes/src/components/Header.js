@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom"
-import {HeaderDiv, TinyDiv, BigDiv, ButtonsDiv, TextDiv} from "./styled"
+import {HeaderDiv, TinyDiv } from "./styled"
 
 function Header(){
 
