@@ -1,12 +1,16 @@
-import {Link} from "react-router-dom"
-import {HeaderDiv, TinyDiv } from "./styled"
+import {HeaderDiv, TinyDiv, ButtonTMDB } from "./styled"
+import { useNavigate } from "react-router-dom"
 
 function Header(){
+    const navigate = useNavigate()
+    function handleClick(){
+        navigate("/")
+    }
 
     return(
         <HeaderDiv>
             <TinyDiv>
-                <Link to="/"> TMDB </Link>
+                <ButtonTMDB onClick={handleClick}> TMDB </ButtonTMDB>
             </TinyDiv>
         </HeaderDiv>
     )

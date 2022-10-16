@@ -13,7 +13,18 @@ export const TinyDiv = styled.div`
     height: 56px;
     left: 0px;
     top: 0px;
-    >Link{
+    >h2{
         color:white;
+    }
+`
+export const ButtonTMDB = styled.button`
+    background-color: #5C16C5;
+    color: white;
+    border: none;
+    margin-left: 4%;
+    font-size: large;
+    :hover{
+        background-color: white;
+        color: #5C16C5;
     }
 `
