@@ -9,10 +9,5 @@ export const productSeed: IProductDB[] = [
 ]
 
 export const tagSeed: ITagsDB = [
-    "tag": "tag",
-
+    tag: "azul"
 ]
-
-export const 
-
-

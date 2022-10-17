@@ -35,6 +35,9 @@ export class ProductBusiness {
 
         return 
     }
+    public createProduct = async(): Promise<undefined> =:{
+        const 
+    }
 
 
 }

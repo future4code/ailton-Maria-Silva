@@ -25,7 +25,9 @@ export class Product {
         return this.tags
     }
 }
-
+export interface ProductInputDTO {
+    name: string
+}
 export interface IGetProductsByNameInputDTO {
     name: string
 }

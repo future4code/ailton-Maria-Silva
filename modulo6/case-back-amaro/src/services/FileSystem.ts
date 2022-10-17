@@ -34,3 +34,22 @@ export class FileSystem {
     }
   }
 }
+/*
+
+const fs = require("fs");
+
+function readFileJson(file: any){
+    try{
+        let content = fs.readFileSync(file, "utf-8");
+        return JSON.parse(content);
+    } catch(error){
+        console.log(error);
+    }
+}
+
+const lendoJSon = readFileJson(
+    path.resolve(_dirname, "./products.json")
+);
+
+
+*/
