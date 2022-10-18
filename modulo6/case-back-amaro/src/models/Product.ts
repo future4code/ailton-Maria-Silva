@@ -5,14 +5,14 @@ export interface ITagsDB {
 export interface IProductDB {
     id: string,
     name: string,
-    tags: string[]
+    tags?: Array<string>
 }
 
 export class Product {
     constructor (
         private id: string,
         private name: string,
-        private tags?: string[]
+        private tags?: ITagsDB[]
     ) {}
 
     public getId = () =>{
@@ -25,24 +25,21 @@ export class Product {
         return this.tags
     }
 }
-export interface ProductInputDTO {
+export interface ICreateProductInputDTO{
     name: string
 }
-export interface IGetProductsByNameInputDTO {
-    name: string
+export interface ICreateProductOutputDTO{
+    message: string,
+    product: Product
 }
-
-export interface IGetProductsOutputDTO {
-    id: string,
-    name: string,
-    tags: string[]
+export interface IGetProductsOutpDTO{
+    products: Product[]
 }
-
-export interface IGetProductsByTagInputDTO {
+export interface IPutTagInputDTO{
+    productId: string,
     tag: string
 }
-
-export interface IProductTagsDB {
-    name_products: string,
-    name_tags: string
+export interface IPutTagOutputDTO{
+    message: string,
+    product: string
 }

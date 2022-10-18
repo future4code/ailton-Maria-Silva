@@ -1,20 +1,26 @@
 import { Request, Response } from "express";
 import { ProductBusiness } from "../business/ProductBusiness";
-import {ProductInputDTO} from 
+import { ICreateProductInputDTO } from "../models/Product";
+import { BaseError } from "../errors/BaseError";
 
-class ProductController {
-    
-    public createProduct = async (req:Request, res:Response) =>{
-        try{
-            const input: ProductInputDTO = {
-                name: req.body.name
+export class ProductController {
+    constructor(
+        private productBusiness: ProductBusiness
+    ) {}
+
+    public createProduct = async (req: Request, res: Response) =>{
+        try {
+            const input: ICreateProductInputDTO = {
+                name: req.headers.name
             }
-            const productBusiness = new ProductBusiness()
-
-            const response = await productBusiness.createProducts(input)
-        } catch(error: any){
-            res.status(500).send({message: error.message})
+            const response = await this.productBusiness.createProduct(input)
+            res.status(201).send(response)
+        } catch (error:any) {
+            if(error instanceof BaseError){
+                return res.status(error.statusCode).send({ message: error.message })
+            }
+            res.status(500).send({message: "Erro inesperado ao criar produto."})
         }
     }
-        
-}
+    
+} 

@@ -1,4 +1,4 @@
-import { IProductDB, Product, IProductTagsDB } from "../models/Product";
+import { IProductDB, Product, ITagsDB } from "../models/Product";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class ProductDatabase extends BaseDatabase {
@@ -9,36 +9,63 @@ export class ProductDatabase extends BaseDatabase {
     public toProductDBModel = (product: Product): IProductDB =>{
         const productDB: IProductDB = {
             id: product.getId(),
-            name: product.getName(),
-            tags: product.getTags()
+            name: product.getName()
         }
-
         return productDB
     }
 
-    public getProducts = async (): Promise<IProductDB[]> =>{
+    public findProductById = async (id: string): Promise< IProductDB | undefined> =>{
+        const result: IProductDB[] = await BaseDatabase
+        .connection(ProductDatabase.TABLE_PRODUCTS)
+        .select()
+        .where({id: id})
+
+        return result[0]
+    }
+    public findProductByName = async (name: string): Promise<IProductDB | undefined> =>{
+        const result: IProductDB[] = await BaseDatabase
+        .connection(ProductDatabase.TABLE_PRODUCTS)
+        .select()
+        .where({name: name})
+
+        return result[0]
+    }
+
+    public createProduct = async(product: Product): Promise<void> =>{
+        const productDB = this.toProductDBModel(product)
+        
+        await BaseDatabase
+        .connection(ProductDatabase.TABLE_PRODUCTS)
+        .insert(productDB)
+    }
+    public getProducts = async(): Promise<IProductDB[]> =>{
         const result: IProductDB[] = await BaseDatabase
         .connection(ProductDatabase.TABLE_PRODUCTS)
         .select()
 
         return result
     }
-    public getTags = async (productName: string): Promise<string[]> =>{
-        const result: IProductTagsDB[] = await BaseDatabase
-        .connection("name_tags")
-        .where({ name_product: productName})
-
-        return result.map(item => item.name_tags)
-    }
-
-    public findProductByName = async(name:string):Promise<IProductDB | undefined> =>{
+    public getTagsByProductId = async (productId: string): Promise <any> =>{
         const result: IProductDB[] = await BaseDatabase
-        .connection(ProductDatabase.TABLE_PRODUCTS)
+        .connection(ProductDatabase.TABLE_TAGS)
         .select()
-        .where({name})
+        .where({ product_id: productId})
 
-        return result [0]
+        return result[0]
     }
-    
-
+    public findTag = async(productId: string, tag: string): Promise <ITagsDB | undefined> =>{
+        const result: ITagsDB[] = await BaseDatabase
+        .connection(ProductDatabase.TABLE_TAGS)
+        .select()
+        .where({
+            product_id: productId,
+            tag: tag
+        })
+        return result[0]
+    }
+    public createTag = async(tagDB: ITagsDB): Promise<void> =>{
+        await BaseDatabase
+        .connection(ProductDatabase.TABLE_TAGS)
+        .insert(tagDB)
+    }
 }

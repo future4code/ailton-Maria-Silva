@@ -1,6 +1,6 @@
 import { BaseDatabase } from "../BaseDatabase";
 import { ProductDatabase } from "../ProductDatabase";
-import { productSeed } from "./data"
+import { products, productsWithTags, tags } from "./data"
 
 
 class Migrations extends BaseDatabase {
@@ -39,13 +39,14 @@ class Migrations extends BaseDatabase {
         );
 
         CREATE TABLE IF NOT EXISTS ${ProductDatabase.TABLE_TAGS} (
-            id VARCHAR(255) UNIQUE,
-            name VARCHAR(255) PRIMARY KEY
+            tag VARCHAR(255) PRIMARY KEY
         );
 
         CREATE TABLE IF NOT EXISTS ${ProductDatabase.TABLE_PRODUCTS_TAGS} (
-            id VARCHAR(255) UNIQUE,
-            name VARCHAR(255) PRIMARY KEY
+            name_product VARCHAR (255) NOT NULL,
+            name_tags VARCHAR (255) NOT NULL,
+            FOREIGN KEY (name_product) REFERENCES ${ProductDatabase.TABLE_PRODUCTS}
+            FOREIGN KEY (name_tags)  REFERENCES ${ProductDatabase.TABLE_TAGS}
         );
         `)
     }
@@ -53,15 +54,15 @@ class Migrations extends BaseDatabase {
     insertData = async () => {
         await BaseDatabase
         .connection(ProductDatabase.TABLE_PRODUCTS)
-        .insert(productSeed)
+        .insert(products)
 
         await BaseDatabase
         .connection(ProductDatabase.TABLE_TAGS)
-        .insert(tagSeed)
+        .insert(tags)
 
         await BaseDatabase
         .connection(ProductDatabase.TABLE_PRODUCTS_TAGS)
-        .insert(productsTagsSeed)
+        .insert(productsWithTags)
     }
 }
 
