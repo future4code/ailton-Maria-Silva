@@ -1,4 +1,4 @@
-import { IProductDB, Product, ITagsDB } from "../models/Product";
+import { IProductDB, Product, ITagDB, ITagsInProductsDB } from "../models/Product";
 import { BaseDatabase } from "./BaseDatabase";
 
 export class ProductDatabase extends BaseDatabase {
@@ -14,11 +14,11 @@ export class ProductDatabase extends BaseDatabase {
         return productDB
     }
 
-    public findProductById = async (id: string): Promise< IProductDB | undefined> =>{
+    public findProductById = async (productId: string): Promise< IProductDB | undefined> =>{
         const result: IProductDB[] = await BaseDatabase
         .connection(ProductDatabase.TABLE_PRODUCTS)
         .select()
-        .where({id: id})
+        .where({id: productId})
 
         return result[0]
     }
@@ -53,8 +53,17 @@ export class ProductDatabase extends BaseDatabase {
 
         return result[0]
     }
-    public findTag = async(productId: string, tag: string): Promise <ITagsDB | undefined> =>{
-        const result: ITagsDB[] = await BaseDatabase
+    public getTag = async(productName: string): Promise<string[]>=>{
+        const result: ITagsInProductsDB[] = await BaseDatabase
+        .connection(ProductDatabase.TABLE_PRODUCTS_TAGS)
+        .select("product_name")
+        .where({product_name: productName})
+
+        return result.map(item => item.product_name)
+
+    }
+    public findTag = async(productId: string, tag: string): Promise <ITagDB | undefined> =>{
+        const result: ITagDB[] = await BaseDatabase
         .connection(ProductDatabase.TABLE_TAGS)
         .select()
         .where({
@@ -63,7 +72,7 @@ export class ProductDatabase extends BaseDatabase {
         })
         return result[0]
     }
-    public createTag = async(tagDB: ITagsDB): Promise<void> =>{
+    public createTag = async(tagDB: ITagDB): Promise<void> =>{
         await BaseDatabase
         .connection(ProductDatabase.TABLE_TAGS)
         .insert(tagDB)

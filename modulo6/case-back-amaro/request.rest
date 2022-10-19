@@ -1,0 +1,19 @@
+### Endpoint de teste
+
+GET http://localhost:3003/ping
+
+### Endpoint de pesquisar produtos pelo nome
+
+GET http://localhost:3003/product
+
+### Endpoint de pequisar produto pelo id
+
+### Endpoint de pesquisar produto pela tag
+
+### Endpoint de criar produto
+POST http://localhost:3003/product
+Content-Type: application/json
+
+{
+    "name": "CALÇA FUSEAU"
+}

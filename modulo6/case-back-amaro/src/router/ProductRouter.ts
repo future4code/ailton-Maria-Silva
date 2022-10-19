@@ -13,7 +13,7 @@ const productController = new ProductController(
     )
 )
 
-productRouter.post("/product", productController.createProducts)
+productRouter.post("/product", productController.createProduct)
 productRouter.get("/product/:name", productController.getProducts)
-productRouter.get("/product/:tags", productController.ByTags)
+//productRouter.get("/product/:tags", productController.ByTags)
 
