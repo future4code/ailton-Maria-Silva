@@ -47,5 +47,17 @@ export class ProductController {
             }
         }
     }
+    public getProductsByTags = async (req: Request, res: Response) =>{
+        try {
+            const tag = req.query.tag 
+            
+            const response = await this.productBusiness.getProductsByTags.(tag)
+            res.status(200).send({ products: response});
+        } catch (error:any) {
+            if(error instanceof BaseError){
+                return res.status(error.statusCode).send({message: "Erro inesperado ao cadastrar tag."})
+            }
+        }
+    }
     
 } 

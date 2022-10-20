@@ -5,12 +5,7 @@ import { IdGenerator } from "../services/IdGenerator"
 import { RequestError } from "../errors/RequestError"
 import { ConflictError } from "../errors/ConflictError"
 import { NotFoundError } from "../errors/NotFoundError"
-
-// endPoint para inserir dados
-
-// endPoit para consulta de dados: pode ser consultado pelo id, nome ou tags
-
-// se for pela tag tem que mostrar todos os produtos que tem a tal tag
+import { ParamsError } from "../errors/ParamsError"
 
 export class ProductBusiness {
 
@@ -72,6 +67,7 @@ export class ProductBusiness {
         for (let productDB of productsDB) {
             const product = new Product(
                 productDB.name,
+                productDB.tags,
                 []
             )
         const tags = await this.productDatabase.getTag(productDB.name)
@@ -112,7 +108,18 @@ export class ProductBusiness {
         }
 
         return response
+    }
+    public getProductsByTags = async (input: string) =>{
         
+        const result = await this.productDatabase.getProductByTag(input)
+
+        if(!result) {
+            throw new NotFoundError("Não foram encontrados produtos com essa tag.")
+        }
+        const products = []
+        const tag = result[0].tag
+        const productsByTag = await this.productDatabase.getProducts
+
     }
 
 } 

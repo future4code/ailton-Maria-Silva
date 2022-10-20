@@ -77,4 +77,12 @@ export class ProductDatabase extends BaseDatabase {
         .connection(ProductDatabase.TABLE_TAGS)
         .insert(tagDB)
     }
+    public getProductByTag = async (name: string): Promise<any> =>{
+        const result = await BaseDatabase
+        .connection(ProductDatabase.TABLE_PRODUCTS_TAGS)
+        .select()
+        .where({name: name})
+        
+        return result[0]
+    }
 }

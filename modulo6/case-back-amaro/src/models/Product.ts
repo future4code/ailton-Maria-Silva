@@ -59,6 +59,6 @@ export interface IGetProductsOutputDTOTwo{
     message: string,
     products: {
         name: string,
-        tags: string[]
+        tags: string[] | undefined
     }[]
 }

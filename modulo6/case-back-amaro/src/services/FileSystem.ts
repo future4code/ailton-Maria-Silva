@@ -3,9 +3,6 @@ import * as path from "path";
 const fs = require("fs");
 
 export class FileSystem {
-  //******************************************************/
-  //*****   MÉTODO DE IMPORTAÇÃO DE ARQUIVO EXTERNO   *****
-  //******************************************************/
 
   readFileJson(file: any) {
     try {
@@ -15,9 +12,6 @@ export class FileSystem {
       console.log("Erro ao carregar o arquivo.");
     }
   }
-//******************************************************/
-  //*****   MÉTODO DE IMPORTAÇÃO DE ARQUIVO EXTERNO   *****
-  //******************************************************/
 
   readFile(file: any) {
     try {
@@ -34,6 +28,7 @@ export class FileSystem {
     }
   }
 }
+
 /*
 
 const fs = require("fs");
