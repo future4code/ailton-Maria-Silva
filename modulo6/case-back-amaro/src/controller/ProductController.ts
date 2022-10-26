@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { ProductBusiness } from "../business/ProductBusiness";
-import { ICreateProductInputDTO, IPutTagInputDTO } from "../models/Product";
+import { ICreateProductInputDTO, IGetProductByNameInputDTO, IPutTagInputDTO } from "../models/Product";
 import { BaseError } from "../errors/BaseError";
 
 export class ProductController {
@@ -30,32 +30,31 @@ export class ProductController {
             if(error instanceof BaseError) {
                 return res.status(error.statusCode).send({ message: error.message})
             }
-            res.status(500).send({ message: "Erro inseperado ao buscar produto"})
+            res.status(500).send({ message: "Erro inesperado ao buscar produto"})
         }
     }
-    public addTags = async (req: Request, res: Response) => {
+    public getProductsByName = async (req: Request, res: Response) =>{
         try {
-            const input: IPutTagInputDTO = {
-                productId: req.params.productId,
-                tag: req.body.tag
+            const input: any = {
+                name: req.query.name
             }
-            const response = this.productBusiness.addTag(input)
+            const response = await this.productBusiness.getProductsByName(input)
             res.status(200).send(response)
-        } catch (error: any) {
+        } catch (error) {
             if(error instanceof BaseError){
-                return res.status(error.statusCode).send({message: "Erro inesperado ao cadastrar tag."})
+                return res.status(error.statusCode).send({message: "Erro inesperado ao pesquisar tag."})
             }
         }
     }
     public getProductsByTags = async (req: Request, res: Response) =>{
         try {
-            const tag = req.query.tag 
+            const input : any = {tags: req.query.tags}
             
-            const response = await this.productBusiness.getProductsByTags.(tag)
+            const response = await this.productBusiness.getProductsByTags(input)
             res.status(200).send({ products: response});
         } catch (error:any) {
             if(error instanceof BaseError){
-                return res.status(error.statusCode).send({message: "Erro inesperado ao cadastrar tag."})
+                return res.status(error.statusCode).send({message: "Erro inesperado ao pesquisar tag."})
             }
         }
     }

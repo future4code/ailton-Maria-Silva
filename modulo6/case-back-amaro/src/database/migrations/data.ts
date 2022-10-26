@@ -1,53 +1,38 @@
-import { IProductDB } from "../../models/Product";
+import * as path from "path";
+import { FileSystem } from "../../services/FileSystem";
+import { IdGenerator } from "../../services/IdGenerator";
 
-export const products: IProductDB[] = [
-    {
-        id: "8371",
-        name: "VESTIDO TRICOT CHEVRON"
-      },
-      {
-        id: "8367",
-        name: "VESTIDO MOLETOM COM CAPUZ MESCLA"
-      },
-      {
-        id: "8363",
-        name: "VESTIDO CURTO MANGA LONGA LUREX"
-      },
-]
+const readignJSON: any = new FileSystem().readFileJson(path.resolve(__dirname, "../../../products.json"))
 
-export const tags: Array<string> = [
-  "casual",
-  "metal",
-  "delicado",
-  "balada",
-  "neutro",
-  "festa",
-]
-
-export const productsWithTags: IProductDB[] = [
-  {
-    "id": "8371",
-    "name": "VESTIDO TRICOT CHEVRON",
-    "tags": ["balada", "neutro", "delicado", "festa"]
-  },
-  {
-    "id": "8367",
-    "name": "VESTIDO MOLETOM COM CAPUZ MESCLA",
-    "tags": ["casual", "metal", "metal"]
-  },
-  {
-    "id": "8363",
-    "name": "VESTIDO CURTO MANGA LONGA LUREX",
-    "tags": ["colorido", "metal", "delicado", "estampas", "passeio"]
-  },
-  {
-    "id": "8360",
-    "name": "VESTIDO FEMININO CANELADO",
-    "tags": ["workwear", "viagem", "descolado"]
-  },
-  {
-    "id": "8358",
-    "name": "VESTIDO REGATA FEMININO COM GOLA",
-    "tags": ["moderno", "inverno", "liso", "basics"]
+export const products: any = readignJSON.products.map((product: any) => {
+  return {
+    id: product.id,
+    name: product.name
   }
-]
+})
+
+export const tags: any = readignJSON.products.flatMap((product: any) => {
+  return product.tags
+})
+
+const noRepeatTags = [... new Set(tags)]
+
+export let tag: any = [];
+for (let i = 0; i < noRepeatTags.length; i ++){
+  tag.push({tag: noRepeatTags[i]})
+}
+
+let counter : number = 0;
+
+export const productsWithTags = []
+
+while (counter < tag.length) {
+  for(let i = 0; i < tag[counter].tags.length; i++){
+    if (tag[counter].tags[i] === tags[i]){
+      productsWithTags.push({
+        tags: tag[counter].tags[i]
+      })
+    }
+    counter++
+  }
+}

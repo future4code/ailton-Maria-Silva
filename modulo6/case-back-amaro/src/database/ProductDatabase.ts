@@ -45,6 +45,14 @@ export class ProductDatabase extends BaseDatabase {
 
         return result
     }
+    public getProductsByName = async(name: string): Promise<IProductDB[]> =>{
+        const result: IProductDB[] = await BaseDatabase
+        .connection(ProductDatabase.TABLE_PRODUCTS)
+        .select("*")
+        .where ({ name })
+
+        return result
+    }
     public getTagsByProductId = async (productId: string): Promise <any> =>{
         const result: IProductDB[] = await BaseDatabase
         .connection(ProductDatabase.TABLE_TAGS)

@@ -2,13 +2,15 @@
 
 GET http://localhost:3003/ping
 
-### Endpoint de pesquisar produtos pelo nome
+### Endpoint de pesquisar produtos
 
 GET http://localhost:3003/product
 
 ### Endpoint de pequisar produto pelo id
+GET http://localhost:3003/product/8371
 
 ### Endpoint de pesquisar produto pela tag
+GET http://localhost:3003/product/casual
 
 ### Endpoint de criar produto
 POST http://localhost:3003/product

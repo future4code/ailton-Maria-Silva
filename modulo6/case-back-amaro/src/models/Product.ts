@@ -40,6 +40,9 @@ export class Product {
 export interface ICreateProductInputDTO{
     name: string
 }
+export interface IGetProductByNameInputDTO{
+    name: string
+}
 export interface ICreateProductOutputDTO{
     message: string,
     product: Product

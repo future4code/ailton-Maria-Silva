@@ -58,68 +58,33 @@ export class ProductBusiness {
         }
         return response
     }
-    public getProductsTwo = async (): Promise<IGetProductsOutputDTOTwo> =>{
+    public getProductsByName = async (input: string): Promise<IGetProductsOutputDTO> =>{
         
-        const productsDB = await this.productDatabase.getProducts()
-
-        const products: Product[] = []
-
-        for (let productDB of productsDB) {
-            const product = new Product(
-                productDB.name,
-                productDB.tags,
-                []
+        const { name } = input
+        const productDB = await this.productDatabase.getProductsByName(name)
+        const products = productDB.map(productDB =>{
+            return new Product(
+                productDB.id,
+                productDB.name
             )
-        const tags = await this.productDatabase.getTag(productDB.name)
-
-        product.setTags(tags)
-
-        products.push(product)
-        }
-        const response: IGetProductsOutputDTOTwo = {
-            message: "Produtos retornados com sucesso",
-            products: products.map((product) => ({
-                name: product.getName(),
-                tags: product.getTags()
-            }))
+        })
+        const response: IGetProductsOutputDTO = {
+            products
         }
         return response
     }
-    public addTag = async (input: IPutTagInputDTO): Promise <IPutTagOutputDTO> =>{
+    public getProductsByTags = async (input: any) =>{
         
-        const { productId } = input
-        
-        const productDB = await this.productDatabase.findProductById(productId)
+        const {tags} = input
 
-        if(!productDB){
-            throw new NotFoundError("Produto não encontrado.")
+        const productDB = await this.productDatabase.getProductByTag(tags)
+        for (let product of productDB){
+            const productId: any = product.getId()
+            const tagsDB = await this.productDatabase.getTag(productId)
+            const mappedTags = tagsDB.map((tags) =>{
+                return tags
+            })
+            product.setTags(mappedTags)
         }
-        const tags = await this.productDatabase.getTagsByProductId(productId)
-
-        const product = new Product(
-            productDB.id,
-            productDB.name,
-            productDB.tags
-        )
-        
-        const response: IPutTagOutputDTO = {
-            message: "Tag adicionada com sucesso",
-            product
-        }
-
-        return response
     }
-    public getProductsByTags = async (input: string) =>{
-        
-        const result = await this.productDatabase.getProductByTag(input)
-
-        if(!result) {
-            throw new NotFoundError("Não foram encontrados produtos com essa tag.")
-        }
-        const products = []
-        const tag = result[0].tag
-        const productsByTag = await this.productDatabase.getProducts
-
-    }
-
 } 
